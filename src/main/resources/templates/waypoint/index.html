@@ -52,11 +52,17 @@
 <!--<ul>-->
     <!--<li th:each="waypoint : ${waypoints}" th:text="${waypoint}"></li>-->
 <!--</ul>-->
+<table class="table">
+    <tr>
+        <th>Waypoint Ident</th>
+        <th>ICAO Region</th>
+    </tr>
 
-<tr th:each="waypoint : ${waypoints}">
-    <td th:text="${waypoint.key}">Key</td>
-    <td th:text="${waypoint.value}">Value</td>
-</tr>
+    <tr  th:each="instance : ${waypoints}">
+        <td th:text="${waypoints.wpt_ident}"></td>
+        <td th:text="${waypoints.icao_rgn}"></td>
+    </tr>
+</table>
 
 </body>
 </html>

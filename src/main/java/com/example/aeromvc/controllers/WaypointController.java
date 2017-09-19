@@ -1,5 +1,6 @@
 package com.example.aeromvc.controllers;
 
+import com.example.aeromvc.models.Wpt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +16,8 @@ import java.util.HashMap;
 public class WaypointController {
 
     //static ArrayList<String> waypoints = new ArrayList<>();
-    static HashMap<String, String> waypoints = new HashMap<>();
+    //static HashMap<String, String> waypoints = new HashMap<>();
+    static Wpt waypoints = new Wpt();
     @RequestMapping(value = "")
 
     public String index(Model model) {
@@ -35,7 +37,8 @@ public class WaypointController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddWaypointForm(@RequestParam String wptIdent, @RequestParam String icaoRgn) {
-        waypoints.put(wptIdent, icaoRgn);
+        waypoints.setWpt_ident(wptIdent);
+        waypoints.setIcao_rgn(icaoRgn);
         return "redirect:";
     }
 }

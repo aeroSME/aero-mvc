@@ -32,9 +32,7 @@ public class Wpt {
     return wptid;
   }
 
-  public Long getArdmid() {
-    return ardmid;
-  }
+  public Long getArdmid() { return ardmid; }
 
   public String getWpt_ident() {
     return wpt_ident;

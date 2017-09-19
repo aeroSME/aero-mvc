@@ -43,13 +43,15 @@
 </body>
 
 <body>
-<form method="post">
-    <div>
-        <label>Waypoint Ident</label>
-        <input type="text" name="wptIdent"/>
+<form method="post" style="max-width: 600px">
+    <div class="form-group">
+        <label for="wptident-field">Waypoint Ident</label>
+        <input class="form-control" id="wptident-field" type="text" name="wptIdent"/>
         <input type="submit" value="Commit"/><br/>
-        <label>ICAO Region</label>
-        <select name="icaoRgn">
+    </div>
+    <div class="form-group">
+        <label for="icao-field">ICAO Region</label>
+        <select class="form-control" id="icao-field" name="icaoRgn">
             <option value="K1">K1</option>
             <option value="K2">K2</option>
             <option value="K3">K3</option>
@@ -58,6 +60,8 @@
             <option value="K6">K6</option>
             <option value="K7">K7</option>
         </select><br/>
+    </div>
+    <div>
         <label>Latitude</label>
         <input type="text" name="WPT_IDENT"/><br/>
         <label>Longitude</label>

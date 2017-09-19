@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 @RequestMapping("waypoint")
 public class WaypointController {
 
-    static         ArrayList<String> waypoints = new ArrayList<>();
+    //static ArrayList<String> waypoints = new ArrayList<>();
+    static HashMap<String, String> waypoints = new HashMap<>();
     @RequestMapping(value = "")
 
     public String index(Model model) {
@@ -32,8 +34,8 @@ public class WaypointController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddWaypointForm(@RequestParam String wptIdent) {
-        waypoints.add(wptIdent);
+    public String processAddWaypointForm(@RequestParam String wptIdent, @RequestParam String icaoRgn) {
+        waypoints.put(wptIdent, icaoRgn);
         return "redirect:";
     }
 }

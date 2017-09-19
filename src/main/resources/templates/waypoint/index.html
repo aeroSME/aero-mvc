@@ -49,10 +49,14 @@
     <a href="/waypoint/delete">Delete</a>
 </nav><br/>
 
-<ul>
-    <li th:each="waypoint : ${waypoints}" th:text="${waypoint}"></li>
-</ul>
+<!--<ul>-->
+    <!--<li th:each="waypoint : ${waypoints}" th:text="${waypoint}"></li>-->
+<!--</ul>-->
 
+<tr th:each="waypoint : ${waypoints}">
+    <td th:text="${waypoint.key}">Key</td>
+    <td th:text="${waypoint.value}">Value</td>
+</tr>
 
 </body>
 </html>

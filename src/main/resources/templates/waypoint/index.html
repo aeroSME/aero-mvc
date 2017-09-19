@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+    <title th:text="'AeroApp ' + ${title}">Default Title</title>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<style type="text/css">
+    div#map_container{
+        width:100%;
+        height:350px;
+    }
+</style>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3vnLeQHTqIKBjkRUvj1mZ5BkZWiN-HG0"></script>
+
+<script type="text/javascript">
+    function loadMap() {
+        var latlng = new google.maps.LatLng(38.7486972, -90.3700289);
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_container"),myOptions);
+
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title:"KSTL Airport"
+        });
+
+    }
+</script>
+
+
+<body onload="loadMap()">
+<div id="map_container"></div>
+</body>
+<br/>
+
+<nav th:fragment="navigation">
+    <a href="/waypoint/add">Add</a> |
+    <a href="/waypoint/modify">Modify</a> |
+    <a href="/waypoint/delete">Delete</a>
+</nav><br/>
+
+<ul>
+    <li th:each="waypoint : ${waypoints}" th:text="${waypoint}"></li>
+</ul>
+
+
+</body>
+</html>

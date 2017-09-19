@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<title th:text="'AeroApp ' + ${title}">Default Title</title>
+
+<body class="container">
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<h1 th:text="${title}">Default Title</h1>
+
+<style type="text/css">
+    div#map_container{
+        width:100%;
+        height:350px;
+    }
+</style>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3vnLeQHTqIKBjkRUvj1mZ5BkZWiN-HG0"></script>
+
+<script type="text/javascript">
+    function loadMap() {
+        var latlng = new google.maps.LatLng(38.7486972, -90.3700289);
+        var myOptions = {
+            zoom: 10,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_container"),myOptions);
+
+        var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            title:"KSTL Airport"
+        });
+
+    }
+</script>
+
+
+<body onload="loadMap()">
+<div id="map_container"></div>
+</body>
+
+<body>
+<form method="post">
+    <div>
+        <label>Waypoint Ident</label>
+        <input type="text" name="wptIdent"/>
+        <input type="submit" value="Query"/><br/>
+        <label>ICAO Region</label>
+        <select name="ICAO">
+            <option value="K1">K1</option>
+            <option value="K2">K2</option>
+            <option value="K3">K3</option>
+            <option value="K4">K4</option>
+            <option value="K5">K5</option>
+            <option value="K6">K6</option>
+            <option value="K7">K7</option>
+        </select><br/>
+        <label>Latitude</label>
+        <input type="text" name="WPT_IDENT"/><br/>
+        <label>Longitude</label>
+        <input type="text" name="WPT_IDENT"/><br/>
+        <label>Datum</label>
+        <select name="DATUM">
+            <option value="WGE">WGS-84</option>
+            <option value="NAD">NAD-83</option>
+        </select><br/>
+        <label>Local Datum</label>
+        <select name="LOCAL">
+            <option value="LOCAL">LOCAL</option>
+        </select><br/>
+        <label>Accuracy</label>
+        <select name="Accuracy">
+            <option value="Accuracy">Accuracy</option>
+        </select><br/>
+        <label>Dynamic Mag Var</label>
+        <input type="text" name="Dynamic"/><br/>
+        <label>Variance</label>
+        <input type="text" name="Variance"/><br/>
+        <label>Variance Date</label>
+        <input type="text" name="Variance Date"/><br/>
+        <label>Usage Code</label>
+        <select name="Usage Code">
+            <option value="Usage Code">Usage Code</option>
+        </select><br/>
+        <label>Type</label>
+        <select name="Type">
+            <option value="Type">Type</option>
+        </select><br/>
+        <label>RVSM</label>
+        <select name="RVSM">
+            <option value="RVSM">RVSM</option>
+        </select><br/>
+        <label>In DAFIF?</label>
+        <input type="checkbox" name="DAFIF"/><br/>
+        <label>DRV Ident</label>
+        <input type="checkbox" name="DRV"/><br/>
+        <label>Chart Text</label>
+        <textarea name="Chart Text"/><br/>
+        <label>Name Indicator</label>
+        <select name="Name Indicator">
+            <option value="Name Indicator">Name Indicator</option>
+        </select><br/>
+        <label>Name Description</label>
+        <textarea name="Name Description"/><br/>
+        <label>Variance Date</label>
+        <input type="text" name="Variance Date"/><br/>
+        <label>Place Name</label>
+        <input type="text" name="VPlace Name"/><br/>
+        <label>ARINC Customer Area</label>
+        <select name="ARINC Customer Area">
+            <option value="ARINC Customer Area">ARINC Customer Area</option>
+        </select><br/>
+        <label>Mod Date</label>
+        <input type="datetime-local"/>
+        <label>Cycle Date</label>
+    </div>
+</form>
+</body>
+
+
+</body>
+</html>

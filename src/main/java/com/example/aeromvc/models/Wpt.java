@@ -1,8 +1,9 @@
 package com.example.aeromvc.models;
 
 public class Wpt {
-  private Long wptid;
-  private Long ardmid;
+  private int wptid;
+  private static int nextId = 1;
+  private int ardmid;
   private String wpt_ident;
   private String icao_rgn;
   private Double latitude;
@@ -16,9 +17,9 @@ public class Wpt {
   private String usage_cd;
   private String wpt_type;
   private String wpt_rvsm;
-  private Long wp_elev;
-  private Long in_dafif;
-  private Long drv_ident;
+  private int wp_elev;
+  private boolean in_dafif;
+  private boolean drv_ident;
   private String chart_text;
   private String name_ind;
   private String name_desc;
@@ -26,13 +27,23 @@ public class Wpt {
   private String custarea;
   private String cont_app_type;
   private java.sql.Timestamp mod_date;
-  private Long airac_cycle;
+  private int airac_cycle;
 
-  public Long getWptid() {
+  public Wpt(String aWpt_ident, String aIcao_rgn) {
+    wpt_ident = aWpt_ident;
+    icao_rgn = aIcao_rgn;
+  }
+
+  public Wpt() {
+    wptid = nextId;
+    nextId++;
+  }
+
+  public int getWptid() {
     return wptid;
   }
 
-  public Long getArdmid() { return ardmid; }
+  public int getArdmid() { return ardmid; }
 
   public String getWpt_ident() {
     return wpt_ident;
@@ -138,27 +149,27 @@ public class Wpt {
     this.wpt_rvsm = wpt_rvsm;
   }
 
-  public Long getWp_elev() {
+  public int getWp_elev() {
     return wp_elev;
   }
 
-  public void setWp_elev(Long wp_elev) {
+  public void setWp_elev(int wp_elev) {
     this.wp_elev = wp_elev;
   }
 
-  public Long getIn_dafif() {
+  public boolean getIn_dafif() {
     return in_dafif;
   }
 
-  public void setIn_dafif(Long in_dafif) {
+  public void setIn_dafif(boolean in_dafif) {
     this.in_dafif = in_dafif;
   }
 
-  public Long getDrv_ident() {
+  public boolean getDrv_ident() {
     return drv_ident;
   }
 
-  public void setDrv_ident(Long drv_ident) {
+  public void setDrv_ident(boolean drv_ident) {
     this.drv_ident = drv_ident;
   }
 
@@ -218,11 +229,9 @@ public class Wpt {
     this.mod_date = mod_date;
   }
 
-  public Long getAirac_cycle() {
-    return airac_cycle;
-  }
+  public int getAirac_cycle() { return airac_cycle; }
 
-  public void setAirac_cycle(Long airac_cycle) {
+  public void setAirac_cycle(int airac_cycle) {
     this.airac_cycle = airac_cycle;
   }
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+
+    <div th:each="waypoint : ${waypoints}" class="checkbox">
+        <input type="checkbox" name="waypoint" th:value="${waypoint.wpt_ident}" th:id="${waypoint.wpt_ident}"/>
+        <label th:for="${waypoint.wpt_ident}" th:text="${waypoint.wpt_ident}"></label>
+        <br />
+    </div>
+
+    <input type="submit" value="Delete Waypoint" />
+</form>
+
+</body>
+</html>

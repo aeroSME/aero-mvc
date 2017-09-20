@@ -59,8 +59,8 @@
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
-        <td th:text="${waypoints.wpt_ident}"></td>
-        <td th:text="${waypoints.icao_rgn}"></td>
+        <td th:text="${instance.wpt_ident}"></td>
+        <td th:text="${instance.icao_rgn}"></td>
     </tr>
 </table>
 

@@ -17,9 +17,10 @@ public class WaypointController {
 
     //static ArrayList<String> waypoints = new ArrayList<>();
     //static HashMap<String, String> waypoints = new HashMap<>();
-    static Wpt waypoints = new Wpt();
-    @RequestMapping(value = "")
+    //static Wpt waypoints = new Wpt();
+    static ArrayList<Wpt> waypoints = new ArrayList<>();
 
+    @RequestMapping(value = "")
     public String index(Model model) {
 
         model.addAttribute("title", "Waypoints");
@@ -37,8 +38,23 @@ public class WaypointController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddWaypointForm(@RequestParam String wptIdent, @RequestParam String icaoRgn) {
-        waypoints.setWpt_ident(wptIdent);
-        waypoints.setIcao_rgn(icaoRgn);
+        Wpt newWpt = new Wpt(wptIdent, icaoRgn);
+        waypoints.add(newWpt);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
+    public  String displayDeleteWaypointForm(Model model) {
+        model.addAttribute("waypoints", waypoints);
+        model.addAttribute("title", "Delete Waypoints");
+        return "waypoint/delete";
+    }
+
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public String processDeleteWaypointForm(@RequestParam ArrayList<String> waypoint) {
+        for (String aWaypoint : waypoint) {
+            waypoints.remove(aWaypoint);
+        }
         return "redirect:";
     }
 }

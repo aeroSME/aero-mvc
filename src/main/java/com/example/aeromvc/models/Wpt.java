@@ -10,7 +10,7 @@ public class Wpt {
   private Double longitude;
   private String datum;
   private String local_datum;
-  private Long geo_acc;
+  private int geo_acc;
   private String d_magvar;
   private Double var;
   private java.sql.Date var_date;
@@ -93,11 +93,11 @@ public class Wpt {
     this.local_datum = local_datum;
   }
 
-  public Long getGeo_acc() {
+  public int getGeo_acc() {
     return geo_acc;
   }
 
-  public void setGeo_acc(Long geo_acc) {
+  public void setGeo_acc(int geo_acc) {
     this.geo_acc = geo_acc;
   }
 

@@ -56,11 +56,29 @@
     <tr>
         <th>Waypoint Ident</th>
         <th>ICAO Region</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Datum</th>
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
         <td th:text="${instance.wpt_ident}"></td>
         <td th:text="${instance.icao_rgn}"></td>
+        <td th:text="${instance.latitude}"></td>
+        <td th:text="${instance.longitude}"></td>
+        <td th:text="${instance.datum}"></td>
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <!--<td th:text="${instance.icao_rgn}"></td>-->
     </tr>
 </table>
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-    <title th:text="'AeroApp ' + ${title}">Default Title</title>
 
 <body class="container">
 
@@ -45,7 +44,7 @@
 
 <nav th:fragment="navigation">
     <a href="/waypoint/add">Add</a> |
-    <a href="/waypoint/modify">Modify</a> |
+    <!--<a href="/waypoint/modify">Modify</a> |-->
     <a href="/waypoint/delete">Delete</a>
 </nav><br/>
 
@@ -54,6 +53,7 @@
 <!--</ul>-->
 <table class="table">
     <tr>
+        <th></th>
         <th>Waypoint Ident</th>
         <th>ICAO Region</th>
         <th>Latitude</th>
@@ -62,6 +62,7 @@
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
+        <td><a th:href="@{'/waypoint/modify/' + ${instance.wptid}}">eidt</a></td>
         <td th:text="${instance.wpt_ident}"></td>
         <td th:text="${instance.icao_rgn}"></td>
         <td th:text="${instance.latitude}"></td>

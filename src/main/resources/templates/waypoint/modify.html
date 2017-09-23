@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
+<title th:text="'AeroApp ' + ${title}">Default Title</title>
 
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="${title}">Default Title</h1>
+<h1 th:text="|Modify ${modded.wpt_ident} (${modded.icao_rgn})|">Default heading reads cheese name and id </h1>
 
 <style type="text/css">
     div#map_container{
@@ -42,10 +43,13 @@
 </body>
 
 <body>
-<form method="post" style="max-width: 200px">
+<form method="post" style="max-width: 200px" th:object="${modded}">
+    <div>
+        <input type="hidden" th:value="${modded.wptid}" name="wptid" />
+    </div>
     <div class="form-group">
-        <label for="wpt_ident-field">Waypoint Ident</label>
-        <input class="form-control" id="wpt_ident-field" type="text" name="wpt_ident"/><br/>
+        <label th:for="wpt_ident-field">Waypoint Ident</label>
+        <input class="form-control" id="wpt_ident-field" type="text" name="wpt_ident" th:value="${modded.wpt_ident}"/><br/>
         <input type="submit" value="Commit"/><br/>
     </div>
     <div class="form-group">
@@ -152,12 +156,12 @@
 
     <!--There is a problem with a datatype mismatch between HTML and the java object-->
     <!--<div>-->
-        <!--<label for="mod_date-field">Mod Date</label>-->
-        <!--<input class="form-control" id="mod_date-field" type="date" name="mod_date"/><br/>-->
+    <!--<label for="mod_date-field">Mod Date</label>-->
+    <!--<input class="form-control" id="mod_date-field" type="date" name="mod_date"/><br/>-->
     <!--</div>-->
     <!--<div>-->
-        <!--<label for="airac_cycle-field">Cycle Date</label>-->
-        <!--<input class="form-control" id="airac_cycle-field" name="airac_cycle"/>-->
+    <!--<label for="airac_cycle-field">Cycle Date</label>-->
+    <!--<input class="form-control" id="airac_cycle-field" name="airac_cycle"/>-->
     <!--</div>-->
 </form>
 </body>

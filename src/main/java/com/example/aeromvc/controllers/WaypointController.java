@@ -55,7 +55,14 @@ public class WaypointController {
         return "redirect:";
     }
 
-//    @RequestMapping(value = "modify", method = RequestMethod.GET)
-//    public String processModifyWaypointForm(Model model, @PathVariable int waypointId) {
-//    }
+    @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.GET)
+    public String processModifyWaypointForm(Model model, @PathVariable int waypointID) {
+        Wpt modWpt = WptData.getById(waypointID);
+        model.addAttribute("modded", modWpt);
+        return "waypoint/modify";
+    }
+
+//    @RequestMapping(value = "modify", method = RequestMethod.POST)
+//    public String processModifyWaypointForm(int waypointId, String wpt_ident, String icao_rgn)
+
 }

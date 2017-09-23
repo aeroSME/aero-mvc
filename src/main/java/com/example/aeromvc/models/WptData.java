@@ -8,6 +8,7 @@ public class WptData {
     public static ArrayList<Wpt> getAll() {
         return waypoints;
     }
+
     public static void add(Wpt newWpt) {
         waypoints.add(newWpt);
     }

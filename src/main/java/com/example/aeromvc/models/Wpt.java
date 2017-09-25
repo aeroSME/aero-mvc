@@ -1,13 +1,26 @@
 package com.example.aeromvc.models;
 
+import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import javafx.beans.DefaultProperty;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Wpt {
+  @NotNull
   private int wptid;
   private static int nextId = 1;
   private int ardmid;
+  @Size(max = 5, min = 5, message = "Waypoint Ident must be five characters")
   private String wpt_ident;
+  @NotNull
   private String icao_rgn;
-  private Double latitude;
-  private Double longitude;
+  @NotNull
+  private float latitude;
+  @NotNull
+  private float longitude;
   private String datum;
   private String local_datum;
   private int geo_acc;
@@ -15,13 +28,17 @@ public class Wpt {
   private Double var;
   private java.sql.Date var_date;
   private String usage_cd;
+  @NotNull
   private String wpt_type;
   private String wpt_rvsm;
   private int wp_elev;
+  @NotNull
   private boolean in_dafif;
   private boolean drv_ident;
   private String chart_text;
   private String name_ind;
+  @NotNull
+  @Size(min = 1, message = "Waypoint Ident Description must be input")
   private String name_desc;
   private String place_name;
   private String custarea;
@@ -61,19 +78,17 @@ public class Wpt {
     this.icao_rgn = icao_rgn;
   }
 
-  public Double getLatitude() {
+  public float getLatitude() {
     return latitude;
   }
 
-  public void setLatitude(Double latitude) {
-    this.latitude = latitude;
-  }
+  public void setLatitude(float latitude) { this.latitude = latitude; }
 
-  public Double getLongitude() {
+  public float getLongitude() {
     return longitude;
   }
 
-  public void setLongitude(Double longitude) {
+  public void setLongitude(float longitude) {
     this.longitude = longitude;
   }
 

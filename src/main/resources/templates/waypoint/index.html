@@ -62,7 +62,7 @@
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
-        <td><a th:href="@{'/waypoint/modify/' + ${instance.wptid}}">eidt</a></td>
+        <td><a th:href="@{'/waypoint/modify/' + ${instance.wptid}}">Modify</a></td>
         <td th:text="${instance.wpt_ident}"></td>
         <td th:text="${instance.icao_rgn}"></td>
         <td th:text="${instance.latitude}"></td>

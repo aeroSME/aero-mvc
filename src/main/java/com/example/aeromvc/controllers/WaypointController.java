@@ -4,8 +4,10 @@ import com.example.aeromvc.models.Wpt;
 import com.example.aeromvc.models.WptData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,11 +33,17 @@ public class WaypointController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddWaypointForm(Model model) {
         model.addAttribute("title", "Add Waypoint");
+        model.addAttribute( new Wpt());
         return "waypoint/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddWaypointForm(@ModelAttribute Wpt newWpt) {
+    public String processAddWaypointForm(@ModelAttribute @Valid Wpt newWpt, Errors errors, Model model) {
+//        Error during execution of processor 'org.thymeleaf.spring4.processor.attr.SpringInputGeneralFieldAttrProcessor' (waypoint/add:48)
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Waypoint");
+            return "waypoint/add";
+        }
         WptData.add(newWpt);
         return "redirect:";
     }
@@ -62,7 +70,12 @@ public class WaypointController {
         return "waypoint/modify";
     }
 
-//    @RequestMapping(value = "modify", method = RequestMethod.POST)
-//    public String processModifyWaypointForm(int waypointId, String wpt_ident, String icao_rgn)
+    @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.POST)
+    public String processModifyWaypointForm(@PathVariable int waypointID, String wpt_ident, String icao_rgn) {
+        Wpt modWpt = WptData.getById(waypointID);
+        modWpt.setWpt_ident(wpt_ident);
+        modWpt.setIcao_rgn(icao_rgn);
+        return "redirect:/waypoint";
+    }
 
 }

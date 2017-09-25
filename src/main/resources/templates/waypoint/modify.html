@@ -54,7 +54,8 @@
     </div>
     <div class="form-group">
         <label for="icao-field">ICAO Region</label>
-        <select class="form-control" id="icao-field" name="icao_rgn">
+        <select class="form-control" id="icao-field" name="icao_rgn" th:value="${modded.icao_rgn}">
+            th:value="${modded.icao_rgn}"
             <option value="K1">K1</option>
             <option value="K2">K2</option>
             <option value="K3">K3</option>
@@ -66,90 +67,90 @@
     </div>
     <div>
         <label for="latitude-field">Latitude</label>
-        <input class="form-control" id="latitude-field" type="text" name="latitude"/><br/>
+        <input class="form-control" id="latitude-field" type="text" name="latitude" th:value="${modded.latitude}"/><br/>
     </div>
     <div>
         <label for="longitude-field">Longitude</label>
-        <input class="form-control" id="longitude-field" type="text" name="longitude"/><br/>
+        <input class="form-control" id="longitude-field" type="text" name="longitude" th:value="${modded.longitude}"/><br/>
     </div>
     <div>
         <label for="datum-field">Datum</label>
-        <select class="form-control" id="datum-field" name="datum">
+        <select class="form-control" id="datum-field" name="datum" th:value="${modded.datum}">
             <option value="WGE">WGS-84</option>
             <option value="NAD">NAD-83</option>
         </select><br/>
     </div>
     <div>
         <label for="local_datum-field">Local Datum</label>
-        <select class="form-control" id="local_datum-field" name="local_datum">
+        <select class="form-control" id="local_datum-field" name="local_datum" th:value="${modded.local_datum}">
             <option value="local_datum">example</option>
         </select><br/>
     </div>
     <div>
         <label for="geo_acc-field">Accuracy</label>
-        <select class="form-control" id="geo_acc-field" name="geo_acc">
+        <select class="form-control" id="geo_acc-field" name="geo_acc" th:value="${modded.geo_acc}">
             <option value="1">example</option>
         </select><br/>
     </div>
     <div>
         <label for="d_magvar-field">Dynamic Mag Var</label>
-        <input class="form-control" id="d_magvar-field" type="text" name="d_magvar"/><br/>
+        <input class="form-control" id="d_magvar-field" type="text" name="d_magvar" th:value="${modded.d_magvar}"/><br/>
     </div>
     <div>
         <label for="var-field">Variance</label>
-        <input class="form-control" id="var-field" type="text" name="var"/><br/>
+        <input class="form-control" id="var-field" type="text" name="var" th:value="${modded.var}"/><br/>
     </div>
     <div>
         <label for="var_date-field">Variance Date</label>
-        <input class="form-control" id="var_date-field" type="date" name="var_date"/><br/>
+        <input class="form-control" id="var_date-field" type="date" name="var_date" th:value="${modded.var_date}"/><br/>
     </div>
     <div>
         <label for="usage_cd-field">Usage Code</label>
-        <select class="form-control" id="usage_cd-field" name="usage_cd">
+        <select class="form-control" id="usage_cd-field" name="usage_cd" th:value="${modded.usage_cd}">
             <option value="usage_cd">example</option>
         </select><br/>
     </div>
     <div>
         <label for="wpt_type-field">Type</label>
-        <select class="form-control" id="wpt_type-field" name="wpt_type">
+        <select class="form-control" id="wpt_type-field" name="wpt_type" th:value="${modded.wpt_type}">
             <option value="wpt_type">example</option>
         </select><br/>
     </div>
     <div>
         <label for="wpt_rvsm-field">RVSM</label>
-        <select class="form-control" id="wpt_rvsm-field" name="wpt_rvsm">
+        <select class="form-control" id="wpt_rvsm-field" name="wpt_rvsm" th:value="${modded.wpt_rvsm}">
             <option value="wpt_rvsm">example</option>
         </select><br/>
     </div>
     <div>
         <label for="in_dafif-field">In DAFIF?</label>
-        <input class="form-control" id="in_dafif-field" type="checkbox" name="in_dafif"/><br/>
+        <input class="form-control" id="in_dafif-field" type="checkbox" name="in_dafif" th:value="${modded.in_dafif}"/><br/>
     </div>
     <div>
         <label for="drv_ident-field">DRV Ident</label>
-        <input class="form-control" id="drv_ident-field" type="checkbox" name="drv_ident"/><br/>
+        <input class="form-control" id="drv_ident-field" type="checkbox" name="drv_ident" th:value="${modded.drv_ident}"/><br/>
     </div>
     <div>
         <label for="chart_text-field">Chart Text</label>
-        <textarea class="form-control" id="chart_text-field" name="chart_text"/><br/>
+        <textarea class="form-control" id="chart_text-field" name="chart_text" th:value="${modded.chart_text}"></textarea><br/>
     </div>
     <div>
         <label for="name_ind-field">Name Indicator</label>
-        <select class="form-control" id="name_ind-field" name="name_ind">
+        <select class="form-control" id="name_ind-field" name="name_ind" th:value="${modded.name_ind}">
             <option value="name_ind">example</option>
         </select><br/>
     </div>
     <div>
         <label for="name_desc-field">Name Description</label>
-        <textarea class="form-control" id="name_desc-field" name="name_desc"/><br/>
+        <textarea class="form-control" id="name_desc-field" name="name_desc" th:value="${modded.name_desc}"/><br/>
     </div>
     <div>
         <label for="place_name-field">Place Name</label>
-        <input class="form-control" id="place_name-field" type="text" name="place_name"/><br/>
+        <input class="form-control" id="place_name-field" type="text" name="place_name" th:value="${modded.place_name}"/><br/>
     </div>
     <div>
         <label for="custarea-field">ARINC Customer Area</label>
-        <select class="form-control" id="custarea-field" name="custarea">
+        <select class="form-control" id="custarea-field" name="custarea" th:value="${modded.custarea}">
             <option value="custarea">example</option>
         </select><br/>
     </div>

@@ -12,53 +12,40 @@ public class Wpt {
   private static int nextId = 1;
   private int ardmid;
   @NotNull
-  @Size(max = 5, min = 5, message = "Waypoint Ident must be five characters")
+  @Size(min=5, max=5, message = "Waypoint Ident must be five characters")
   private String wpt_ident;
-//  @NotNull
-//  private String icao_rgn;
   @NotNull(message = "ICAO Region required")
   private String icao_rgn;
   @NotNull(message = "Latitude required")
   private float latitude;
   @NotNull(message = "Longitude required")
   private float longitude;
-//  private String datum;
   private Datum datum = Datum.WGE;
   private LocalDatum local_datum;
-//  private String local_datum;
   private CoordACC coordACC = CoordACC.ZERO;
-//  private int geo_acc;
   private String d_magvar;
   private Double var;
   private java.sql.Date var_date;
-  @NotNull (message = "Waypoint Usage required")
+  //@NotNull (message = "Waypoint Usage required")
   private WptUsage wpt_usage;
-//  private String usage_cd;
-//  @NotNull
-//  private String wpt_type;
-@NotNull (message = "Waypoint Type required")
+  //@NotNull (message = "Waypoint Type required")
   private WptType wpt_type;
-//  private String wpt_rvsm;
   private WptRVSM wpt_rvsm;
   private int wp_elev;
-//  @NotNull
-//  private boolean in_dafif;
-  @NotNull
+  //@NotNull(message = "Required")
   private InDAFIF in_dafif = InDAFIF.N;
   private boolean drv_ident;
   private String chart_text;
-//  private String name_ind;
   private NameIndicator name_ind;
-  @NotNull
-  @Size(min = 1, message = "Waypoint Naming Description required")
+ // @NotNull
+ // @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
   private String place_name;
-  //  private String custarea;
   private ARINCcustArea arincCustArea;
   private String cont_app_type;
-  @NotNull
+  //@NotNull
   private java.sql.Timestamp mod_date;
-  @NotNull
+  //@NotNull
   private YearMonth airac_cycle;
 
   public Wpt(String aWpt_ident, String aIcao_rgn) {

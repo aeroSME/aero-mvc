@@ -32,14 +32,14 @@ public class WaypointController {
         model.addAttribute( new Wpt());
         model.addAttribute("icao_rgns", IcaoRgn.values());
         model.addAttribute("datums", Datum.values());
-        model.addAttribute("local_datums", LocalDatum.values());
-        model.addAttribute("coordACCs", CoordACC.values());
-        model.addAttribute("wpt_usages", WptUsage.values());
-        model.addAttribute("wpt_types", WptType.values());
-        model.addAttribute("wpt_rvsms", WptRVSM.values());
-        model.addAttribute("in_dafifs", InDAFIF.values());
-        model.addAttribute("name_inds", NameIndicator.values());
-        model.addAttribute("arincCustAreas", ARINCcustArea.values());
+//        model.addAttribute("local_datums", LocalDatum.values());
+//        model.addAttribute("coordACCs", CoordACC.values());
+//        model.addAttribute("wpt_usages", WptUsage.values());
+//        model.addAttribute("wpt_types", WptType.values());
+//        model.addAttribute("wpt_rvsms", WptRVSM.values());
+//        model.addAttribute("in_dafifs", InDAFIF.values());
+//        model.addAttribute("name_inds", NameIndicator.values());
+//        model.addAttribute("arincCustAreas", ARINCcustArea.values());
         return "waypoint/add";
     }
 
@@ -49,14 +49,14 @@ public class WaypointController {
             model.addAttribute("title", "Add Waypoint");
             model.addAttribute("icao_rgns", IcaoRgn.values());
             model.addAttribute("datums", Datum.values());
-            model.addAttribute("local_datums", LocalDatum.values());
-            model.addAttribute("coordACCs", CoordACC.values());
-            model.addAttribute("wpt_usages", WptUsage.values());
-            model.addAttribute("wpt_types", WptType.values());
-            model.addAttribute("wpt_rvsms", WptRVSM.values());
-            model.addAttribute("in_dafifs", InDAFIF.values());
-            model.addAttribute("name_inds", NameIndicator.values());
-            model.addAttribute("arincCustAreas", ARINCcustArea.values());
+//            model.addAttribute("local_datums", LocalDatum.values());
+//            model.addAttribute("coordACCs", CoordACC.values());
+//            model.addAttribute("wpt_usages", WptUsage.values());
+//            model.addAttribute("wpt_types", WptType.values());
+//            model.addAttribute("wpt_rvsms", WptRVSM.values());
+//            model.addAttribute("in_dafifs", InDAFIF.values());
+//            model.addAttribute("name_inds", NameIndicator.values());
+//            model.addAttribute("arincCustAreas", ARINCcustArea.values());
             return "waypoint/add";
         }
         WptData.add(newWpt);

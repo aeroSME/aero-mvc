@@ -7,7 +7,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="|Modify ${modWpt.wpt_ident} (${modWpt.icao_rgn})|">Default heading reads ident and ICAO </h1>
+<h1 th:text="|Modify ${wpt.wpt_ident} (${wpt.icao_rgn})|">Default heading reads ident and ICAO </h1>
 
 <style type="text/css">
     div#map_container{
@@ -42,20 +42,18 @@
 <div id="map_container"></div>
 </body>
 
-<body>
-
-<form method="post" style="max-width: 500px" th:object="${modWpt}">
+<form method="post" style="max-width: 500px" th:object="${wpt}">
     <div>
-        <input type="hidden" th:value="${modWpt.wptid}" name="wptid" />
+        <input type="hidden" th:value="${wpt.wptid}" name="wptid" />
     </div>
     <div class="form-group">
         <label th:for="wpt_ident">Waypoint Ident</label>
-        <input th:field="*{wpt_ident}" th:value="${modWpt.wpt_ident}"/>
+        <input th:field="*{wpt_ident}" th:value="${wpt.wpt_ident}"/>
         <span th:errors="*{wpt_ident}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="icao_rgn">ICAO Region</label>
-        <select th:field="*{icao_rgn}" th:value="${modWpt.icao_rgn}">
+        <select th:field="*{icao_rgn}" th:value="${wpt.icao_rgn}">
             <option th:each="IcaoRgn : ${icao_rgns}"
                     th:text="${IcaoRgn.displayName}"
                     th:value="${IcaoRgn}"></option>
@@ -64,17 +62,17 @@
     </div>
     <div class="form-group">
         <label th:for="latitude">Latitude</label>
-        <input th:field="*{latitude}" th:value="${modWpt.latitude}"/>
+        <input th:field="*{latitude}" th:value="${wpt.latitude}"/>
         <span th:errors="*{latitude}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="longitude">Longitude</label>
-        <input th:field="*{longitude}" th:value="${modWpt.longitude}"/>
+        <input th:field="*{longitude}" th:value="${wpt.longitude}"/>
         <span th:errors="*{longitude}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="datum">Datum</label>
-        <select th:field="*{datum}" th:value="${modWpt.datum}">
+        <select th:field="*{datum}" th:value="${wpt.datum}">
             <option th:each="Datum : ${datums}"
                     th:text="${Datum.displayName}"
                     th:value="${Datum}"></option>
@@ -82,7 +80,7 @@
     </div>
     <div class="form-group">
         <label th:for="local_datum">Local Datum</label>
-        <select th:field="*{local_datum}" th:value="${modWpt.local_datum}">
+        <select th:field="*{local_datum}" th:value="${wpt.local_datum}">
             <option th:each="LocalDatum : ${local_datums}"
                     th:text="${LocalDatum.displayName}"
                     th:value="${LocalDatum}"></option>
@@ -90,7 +88,7 @@
     </div>
     <div class="form-group">
         <label th:for="coordACC">Accuracy</label>
-        <select th:field="*{coordACC}" th:value="${modWpt.coordACC}">
+        <select th:field="*{coordACC}" th:value="${wpt.coordACC}">
             <option th:each="CoordACC : ${coordACCs}"
                     th:text="${CoordACC.displayName}"
                     th:value="${coordACC}"></option>
@@ -98,19 +96,21 @@
     </div>
     <div class="form-group">
         <label th:for="d_magvar">Dynamic Mag Var</label>
-        <input th:field="*{d_magvar}" th:value="${modWpt.d_magvar}"/>
+        <input th:field="*{d_magvar}" th:value="${wpt.d_magvar}"/>
     </div>
     <div class="form-group">
         <label th:for="var">Variance</label>
-        <input th:field="*{var}" th:value="${modWpt.var}"/>
+        <input th:field="*{var}" th:value="${wpt.var}"/>
     </div>
-    <div class="form-group">
-        <label th:for="var_date">Variance Date</label>
-        <input th:field="*{var_date}" th:value="${modWpt.var_date}"/>
-    </div>
+
+    <!--TODO:  Upon commit there is a conversion error going from form string to java.sql.date type.-->
+    <!--<div class="form-group">-->
+        <!--<label th:for="var_date">Variance Date</label>-->
+        <!--<input th:field="*{var_date}" th:value="${wpt.var_date}"/>-->
+    <!--</div>-->
     <div class="form-group">
         <label th:for="wpt_usage">Usage Code</label>
-        <select th:field="*{wpt_usage}" th:value="${modWpt.wpt_usage}">
+        <select th:field="*{wpt_usage}" th:value="${wpt.wpt_usage}">
             <option th:each="WptUsage : ${wpt_usages}"
                     th:text="${WptUsage.displayName}"
                     th:value="${WptUsage}"></option>
@@ -118,7 +118,7 @@
     </div>
     <div class="form-group">
         <label th:for="wpt_type">Waypoint Type</label>
-        <select th:field="*{wpt_type}" th:value="${modWpt.wpt_type}">
+        <select th:field="*{wpt_type}" th:value="${wpt.wpt_type}">
             <option th:each="WptType : ${wpt_types}"
                     th:text="${WptType.displayName}"
                     th:value="${WptType}"></option>
@@ -126,7 +126,7 @@
     </div>
     <div class="form-group">
         <label th:for="wpt_rvsm">RVSM</label>
-        <select th:field="*{wpt_rvsm}" th:value="${modWpt.wpt_rvsm}">
+        <select th:field="*{wpt_rvsm}" th:value="${wpt.wpt_rvsm}">
             <option th:each="WptRVSM : ${wpt_rvsms}"
                     th:text="${WptRVSM.displayName}"
                     th:value="${WptRVSM}"></option>
@@ -134,7 +134,7 @@
     </div>
     <div class="form-group">
         <label th:for="in_dafif">In DAFIF?</label>
-        <select th:field="*{in_dafif}" th:value="${modWpt.in_dafif}">
+        <select th:field="*{in_dafif}" th:value="${wpt.in_dafif}">
             <option th:each="InDAFIF : ${in_dafifs}"
                     th:text="${InDAFIF.displayName}"
                     th:value="${InDAFIF}"></option>
@@ -142,16 +142,16 @@
     </div>
     <div class="form-group">
         <label th:for="drv_ident">DRV Ident</label>
-        <input type="checkbox" th:field="*{drv_ident}" th:value="${modWpt.drv_ident}"/>
+        <input type="checkbox" th:field="*{drv_ident}" th:value="${wpt.drv_ident}"/>
     </div>
     <div class="form-group">
         <label th:for="chart_text">Chart Text</label>
         <!--TODO: Investigate why this text area will not accept data-->
-        <textarea th:field="*{chart_text}" th:value="${modWpt.chart_text}"/>
+        <textarea th:field="*{chart_text}" th:value="${wpt.chart_text}"/>
     </div>
     <div class="form-group">
         <label th:for="name_ind">Name Indicator</label>
-        <select th:field="*{name_ind}" th:value="${modWpt.name_ind}">
+        <select th:field="*{name_ind}" th:value="${wpt.name_ind}">
             <option th:each="NameIndicator : ${name_inds}"
                     th:text="${NameIndicator.displayName}"
                     th:value="${NameIndicator}"></option>
@@ -159,15 +159,15 @@
     </div>
     <div class="form-group">
         <label th:for="name_desc">Name Description</label>
-        <input th:field="*{name_desc}" th:value="${modWpt.name_desc}"/>
+        <input th:field="*{name_desc}" th:value="${wpt.name_desc}"/>
     </div>
     <div class="form-group">
         <label th:for="place_name">Place Name</label>
-        <input th:field="*{place_name}" th:value="${modWpt.place_name}"/>
+        <input th:field="*{place_name}" th:value="${wpt.place_name}"/>
     </div>
     <div class="form-group">
         <label th:for="arincCustArea">ARINC Customer Area</label>
-        <select th:field="*{arincCustArea}" th:value="${modWpt.arincCustArea}">
+        <select th:field="*{arincCustArea}" th:value="${wpt.arincCustArea}">
             <option th:each="ARINCcustArea : ${arincCustAreas}"
                     th:text="${ARINCcustArea.displayName}"
                     th:value="${ARINCcustArea}"></option>

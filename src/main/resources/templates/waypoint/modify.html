@@ -7,7 +7,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="|Modify ${modded.wpt_ident} (${modded.icao_rgn})|">Default heading reads cheese name and id </h1>
+<h1 th:text="|Modify ${modWpt.wpt_ident} (${modWpt.icao_rgn})|">Default heading reads ident and ICAO </h1>
 
 <style type="text/css">
     div#map_container{
@@ -43,130 +43,149 @@
 </body>
 
 <body>
-<form method="post" style="max-width: 200px" th:object="${modded}">
-    <div>
-        <input type="hidden" th:value="${modded.wptid}" name="wptid" />
-    </div>
-    <div class="form-group">
-        <label th:for="wpt_ident-field">Waypoint Ident</label>
-        <input class="form-control" id="wpt_ident-field" type="text" name="wpt_ident" th:value="${modded.wpt_ident}"/><br/>
-        <input type="submit" value="Commit"/><br/>
-    </div>
-    <div class="form-group">
-        <label for="icao-field">ICAO Region</label>
-        <select class="form-control" id="icao-field" name="icao_rgn" th:value="${modded.icao_rgn}">
-            th:value="${modded.icao_rgn}"
-            <option value="K1">K1</option>
-            <option value="K2">K2</option>
-            <option value="K3">K3</option>
-            <option value="K4">K4</option>
-            <option value="K5">K5</option>
-            <option value="K6">K6</option>
-            <option value="K7">K7</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="latitude-field">Latitude</label>
-        <input class="form-control" id="latitude-field" type="text" name="latitude" th:value="${modded.latitude}"/><br/>
-    </div>
-    <div>
-        <label for="longitude-field">Longitude</label>
-        <input class="form-control" id="longitude-field" type="text" name="longitude" th:value="${modded.longitude}"/><br/>
-    </div>
-    <div>
-        <label for="datum-field">Datum</label>
-        <select class="form-control" id="datum-field" name="datum" th:value="${modded.datum}">
-            <option value="WGE">WGS-84</option>
-            <option value="NAD">NAD-83</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="local_datum-field">Local Datum</label>
-        <select class="form-control" id="local_datum-field" name="local_datum" th:value="${modded.local_datum}">
-            <option value="local_datum">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="geo_acc-field">Accuracy</label>
-        <select class="form-control" id="geo_acc-field" name="geo_acc" th:value="${modded.geo_acc}">
-            <option value="1">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="d_magvar-field">Dynamic Mag Var</label>
-        <input class="form-control" id="d_magvar-field" type="text" name="d_magvar" th:value="${modded.d_magvar}"/><br/>
-    </div>
-    <div>
-        <label for="var-field">Variance</label>
-        <input class="form-control" id="var-field" type="text" name="var" th:value="${modded.var}"/><br/>
-    </div>
-    <div>
-        <label for="var_date-field">Variance Date</label>
-        <input class="form-control" id="var_date-field" type="date" name="var_date" th:value="${modded.var_date}"/><br/>
-    </div>
-    <div>
-        <label for="usage_cd-field">Usage Code</label>
-        <select class="form-control" id="usage_cd-field" name="usage_cd" th:value="${modded.usage_cd}">
-            <option value="usage_cd">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="wpt_type-field">Type</label>
-        <select class="form-control" id="wpt_type-field" name="wpt_type" th:value="${modded.wpt_type}">
-            <option value="wpt_type">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="wpt_rvsm-field">RVSM</label>
-        <select class="form-control" id="wpt_rvsm-field" name="wpt_rvsm" th:value="${modded.wpt_rvsm}">
-            <option value="wpt_rvsm">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="in_dafif-field">In DAFIF?</label>
-        <input class="form-control" id="in_dafif-field" type="checkbox" name="in_dafif" th:value="${modded.in_dafif}"/><br/>
-    </div>
-    <div>
-        <label for="drv_ident-field">DRV Ident</label>
-        <input class="form-control" id="drv_ident-field" type="checkbox" name="drv_ident" th:value="${modded.drv_ident}"/><br/>
-    </div>
-    <div>
-        <label for="chart_text-field">Chart Text</label>
-        <textarea class="form-control" id="chart_text-field" name="chart_text" th:value="${modded.chart_text}"></textarea><br/>
-    </div>
-    <div>
-        <label for="name_ind-field">Name Indicator</label>
-        <select class="form-control" id="name_ind-field" name="name_ind" th:value="${modded.name_ind}">
-            <option value="name_ind">example</option>
-        </select><br/>
-    </div>
-    <div>
-        <label for="name_desc-field">Name Description</label>
-        <textarea class="form-control" id="name_desc-field" name="name_desc" th:value="${modded.name_desc}"/><br/>
-    </div>
-    <div>
-        <label for="place_name-field">Place Name</label>
-        <input class="form-control" id="place_name-field" type="text" name="place_name" th:value="${modded.place_name}"/><br/>
-    </div>
-    <div>
-        <label for="custarea-field">ARINC Customer Area</label>
-        <select class="form-control" id="custarea-field" name="custarea" th:value="${modded.custarea}">
-            <option value="custarea">example</option>
-        </select><br/>
-    </div>
 
-    <!--There is a problem with a datatype mismatch between HTML and the java object-->
+<form method="post" style="max-width: 500px" th:object="${modWpt}">
+    <div>
+        <input type="hidden" th:value="${modWpt.wptid}" name="wptid" />
+    </div>
+    <div class="form-group">
+        <label th:for="wpt_ident">Waypoint Ident</label>
+        <input th:field="*{wpt_ident}" th:value="${modWpt.wpt_ident}"/>
+        <span th:errors="*{wpt_ident}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="icao_rgn">ICAO Region</label>
+        <select th:field="*{icao_rgn}" th:value="${modWpt.icao_rgn}">
+            <option th:each="IcaoRgn : ${icao_rgns}"
+                    th:text="${IcaoRgn.displayName}"
+                    th:value="${IcaoRgn}"></option>
+        </select>
+        <span th:errors="*{icao_rgn}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="latitude">Latitude</label>
+        <input th:field="*{latitude}" th:value="${modWpt.latitude}"/>
+        <span th:errors="*{latitude}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="longitude">Longitude</label>
+        <input th:field="*{longitude}" th:value="${modWpt.longitude}"/>
+        <span th:errors="*{longitude}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="datum">Datum</label>
+        <select th:field="*{datum}" th:value="${modWpt.datum}">
+            <option th:each="Datum : ${datums}"
+                    th:text="${Datum.displayName}"
+                    th:value="${Datum}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="local_datum">Local Datum</label>
+        <select th:field="*{local_datum}" th:value="${modWpt.local_datum}">
+            <option th:each="LocalDatum : ${local_datums}"
+                    th:text="${LocalDatum.displayName}"
+                    th:value="${LocalDatum}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="coordACC">Accuracy</label>
+        <select th:field="*{coordACC}" th:value="${modWpt.coordACC}">
+            <option th:each="CoordACC : ${coordACCs}"
+                    th:text="${CoordACC.displayName}"
+                    th:value="${coordACC}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="d_magvar">Dynamic Mag Var</label>
+        <input th:field="*{d_magvar}" th:value="${modWpt.d_magvar}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="var">Variance</label>
+        <input th:field="*{var}" th:value="${modWpt.var}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="var_date">Variance Date</label>
+        <input th:field="*{var_date}" th:value="${modWpt.var_date}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="wpt_usage">Usage Code</label>
+        <select th:field="*{wpt_usage}" th:value="${modWpt.wpt_usage}">
+            <option th:each="WptUsage : ${wpt_usages}"
+                    th:text="${WptUsage.displayName}"
+                    th:value="${WptUsage}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="wpt_type">Waypoint Type</label>
+        <select th:field="*{wpt_type}" th:value="${modWpt.wpt_type}">
+            <option th:each="WptType : ${wpt_types}"
+                    th:text="${WptType.displayName}"
+                    th:value="${WptType}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="wpt_rvsm">RVSM</label>
+        <select th:field="*{wpt_rvsm}" th:value="${modWpt.wpt_rvsm}">
+            <option th:each="WptRVSM : ${wpt_rvsms}"
+                    th:text="${WptRVSM.displayName}"
+                    th:value="${WptRVSM}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="in_dafif">In DAFIF?</label>
+        <select th:field="*{in_dafif}" th:value="${modWpt.in_dafif}">
+            <option th:each="InDAFIF : ${in_dafifs}"
+                    th:text="${InDAFIF.displayName}"
+                    th:value="${InDAFIF}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="drv_ident">DRV Ident</label>
+        <input type="checkbox" th:field="*{drv_ident}" th:value="${modWpt.drv_ident}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="chart_text">Chart Text</label>
+        <!--TODO: Investigate why this text area will not accept data-->
+        <textarea th:field="*{chart_text}" th:value="${modWpt.chart_text}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="name_ind">Name Indicator</label>
+        <select th:field="*{name_ind}" th:value="${modWpt.name_ind}">
+            <option th:each="NameIndicator : ${name_inds}"
+                    th:text="${NameIndicator.displayName}"
+                    th:value="${NameIndicator}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="name_desc">Name Description</label>
+        <input th:field="*{name_desc}" th:value="${modWpt.name_desc}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="place_name">Place Name</label>
+        <input th:field="*{place_name}" th:value="${modWpt.place_name}"/>
+    </div>
+    <div class="form-group">
+        <label th:for="arincCustArea">ARINC Customer Area</label>
+        <select th:field="*{arincCustArea}" th:value="${modWpt.arincCustArea}">
+            <option th:each="ARINCcustArea : ${arincCustAreas}"
+                    th:text="${ARINCcustArea.displayName}"
+                    th:value="${ARINCcustArea}"></option>
+        </select>
+    </div>
+    <!--TODO: There is a problem with a datatype mismatch between HTML and the java object-->
     <!--<div>-->
-    <!--<label for="mod_date-field">Mod Date</label>-->
-    <!--<input class="form-control" id="mod_date-field" type="date" name="mod_date"/><br/>-->
+    <!--<label th:for="mod_date">Mod Date</label>-->
+    <!--<input id="mod_date" type="date" name="mod_date"/>-->
     <!--</div>-->
+    <!--TODO: How to handle Cycle Date???-->
     <!--<div>-->
-    <!--<label for="airac_cycle-field">Cycle Date</label>-->
-    <!--<input class="form-control" id="airac_cycle-field" name="airac_cycle"/>-->
+    <!--<label th:for="airac_cycle">Cycle Date</label>-->
+    <!--<input id="airac_cycle" name="airac_cycle"/>-->
     <!--</div>-->
+    <div class="form-group">
+        <input type="submit" value="Commit"/>
+    </div>
 </form>
-</body>
-
-
 </body>
 </html>

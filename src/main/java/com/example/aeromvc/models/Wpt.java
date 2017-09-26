@@ -24,7 +24,7 @@ public class Wpt {
   private float longitude;
 //  private String datum;
   private Datum datum = Datum.WGE;
-  private LocalDatum localDatum;
+  private LocalDatum local_datum;
 //  private String local_datum;
   private CoordACC coordACC = CoordACC.ZERO;
 //  private int geo_acc;
@@ -32,7 +32,7 @@ public class Wpt {
   private Double var;
   private java.sql.Date var_date;
   @NotNull (message = "Waypoint Usage required")
-  private WptUsage wptUsage;
+  private WptUsage wpt_usage;
 //  private String usage_cd;
 //  @NotNull
 //  private String wpt_type;
@@ -44,7 +44,7 @@ public class Wpt {
 //  @NotNull
 //  private boolean in_dafif;
   @NotNull
-  private InDAFIF inDAFIF = InDAFIF.N;
+  private InDAFIF in_dafif = InDAFIF.N;
   private boolean drv_ident;
   private String chart_text;
 //  private String name_ind;
@@ -53,8 +53,8 @@ public class Wpt {
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
   private String place_name;
-//  private String custarea;
-  private ARINCcustArea arinCcustArea;
+  //  private String custarea;
+  private ARINCcustArea arincCustArea;
   private String cont_app_type;
   @NotNull
   private java.sql.Timestamp mod_date;
@@ -132,12 +132,12 @@ public class Wpt {
     this.datum = datum;
   }
 
-  public LocalDatum getLocalDatum() {
-    return localDatum;
+  public LocalDatum getLocal_datum() {
+    return local_datum;
   }
 
-  public void setLocalDatum(LocalDatum localDatum) {
-    this.localDatum = localDatum;
+  public void setLocal_datum(LocalDatum local_datum) {
+    this.local_datum = local_datum;
   }
 
   public CoordACC getCoordACC() {
@@ -172,12 +172,12 @@ public class Wpt {
     this.var_date = var_date;
   }
 
-  public WptUsage getWptUsage() {
-    return wptUsage;
+  public WptUsage getWpt_usage() {
+    return wpt_usage;
   }
 
-  public void setWptUsage(WptUsage wptUsage) {
-    this.wptUsage = wptUsage;
+  public void setWpt_usage(WptUsage wpt_usage) {
+    this.wpt_usage = wpt_usage;
   }
 
   public WptType getWpt_type() {
@@ -204,12 +204,12 @@ public class Wpt {
     this.wp_elev = wp_elev;
   }
 
-  public InDAFIF getInDAFIF() {
-    return inDAFIF;
+  public InDAFIF getIn_dafif() {
+    return in_dafif;
   }
 
-  public void setInDAFIF(InDAFIF inDAFIF) {
-    this.inDAFIF = inDAFIF;
+  public void setIn_dafif(InDAFIF in_dafif) {
+    this.in_dafif = in_dafif;
   }
 
   public boolean isDrv_ident() {
@@ -252,12 +252,12 @@ public class Wpt {
     this.place_name = place_name;
   }
 
-  public ARINCcustArea getArinCcustArea() {
-    return arinCcustArea;
+  public ARINCcustArea getArincCustArea() {
+    return arincCustArea;
   }
 
-  public void setArinCcustArea(ARINCcustArea arinCcustArea) {
-    this.arinCcustArea = arinCcustArea;
+  public void setArincCustArea(ARINCcustArea arincCustArea) {
+    this.arincCustArea = arincCustArea;
   }
 
   public String getCont_app_type() {

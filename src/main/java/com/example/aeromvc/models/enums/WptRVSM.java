@@ -14,4 +14,8 @@ public enum WptRVSM {
         this.displayName = displayName;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
 }

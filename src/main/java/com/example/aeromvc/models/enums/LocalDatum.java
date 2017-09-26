@@ -132,4 +132,8 @@ public enum  LocalDatum {
     LocalDatum(String displayName) {
         this.displayName = displayName;
     }
+
+    public String getDisplayName() {
+        return displayName;
+    }
 }

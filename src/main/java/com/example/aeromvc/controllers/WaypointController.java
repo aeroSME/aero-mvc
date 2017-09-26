@@ -17,17 +17,11 @@ import java.util.HashMap;
 @RequestMapping("waypoint")
 public class WaypointController {
 
-    //static ArrayList<String> waypoints = new ArrayList<>();
-    //static HashMap<String, String> waypoints = new HashMap<>();
-    //static Wpt waypoints = new Wpt();
-//    static ArrayList<Wpt> waypoints = new ArrayList<>();
-
     @RequestMapping(value = "")
     public String index(Model model) {
 
         model.addAttribute("title", "Waypoints");
         model.addAttribute("waypoints", WptData.getAll());
-
         return "waypoint/index";
 
     }
@@ -36,17 +30,16 @@ public class WaypointController {
     public String displayAddWaypointForm(Model model) {
         model.addAttribute("title", "Add Waypoint");
         model.addAttribute( new Wpt());
-        model.addAttribute("icao_rgn", IcaoRgn.values());
-        model.addAttribute("datum", Datum.values());
-        model.addAttribute("local_datum", LocalDatum.values());
-        model.addAttribute("geo_acc", CoordACC.values());
-        model.addAttribute("usage_cd", WptUsage.values());
-        model.addAttribute("wpt_type", WptType.values());
-        model.addAttribute("wpt_rvsm", WptRVSM.values());
-        model.addAttribute("in_dafif", InDAFIF.values());
-        model.addAttribute("custarea", ARINCcustArea.values());
-
-
+        model.addAttribute("icao_rgns", IcaoRgn.values());
+        model.addAttribute("datums", Datum.values());
+        model.addAttribute("local_datums", LocalDatum.values());
+        model.addAttribute("coordACCs", CoordACC.values());
+        model.addAttribute("wpt_usages", WptUsage.values());
+        model.addAttribute("wpt_types", WptType.values());
+        model.addAttribute("wpt_rvsms", WptRVSM.values());
+        model.addAttribute("in_dafifs", InDAFIF.values());
+        model.addAttribute("name_inds", NameIndicator.values());
+        model.addAttribute("arincCustAreas", ARINCcustArea.values());
         return "waypoint/add";
     }
 
@@ -54,6 +47,16 @@ public class WaypointController {
     public String processAddWaypointForm(@ModelAttribute @Valid Wpt newWpt, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Waypoint");
+            model.addAttribute("icao_rgns", IcaoRgn.values());
+            model.addAttribute("datums", Datum.values());
+            model.addAttribute("local_datums", LocalDatum.values());
+            model.addAttribute("coordACCs", CoordACC.values());
+            model.addAttribute("wpt_usages", WptUsage.values());
+            model.addAttribute("wpt_types", WptType.values());
+            model.addAttribute("wpt_rvsms", WptRVSM.values());
+            model.addAttribute("in_dafifs", InDAFIF.values());
+            model.addAttribute("name_inds", NameIndicator.values());
+            model.addAttribute("arincCustAreas", ARINCcustArea.values());
             return "waypoint/add";
         }
         WptData.add(newWpt);
@@ -78,17 +81,27 @@ public class WaypointController {
     @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.GET)
     public String processModifyWaypointForm(Model model, @PathVariable int waypointID) {
         Wpt modWpt = WptData.getById(waypointID);
-        model.addAttribute("modded", modWpt);
+        model.addAttribute(modWpt);
+        model.addAttribute("icao_rgns", IcaoRgn.values());
+        model.addAttribute("datums", Datum.values());
+        model.addAttribute("local_datums", LocalDatum.values());
+        model.addAttribute("coordACCs", CoordACC.values());
+        model.addAttribute("wpt_usages", WptUsage.values());
+        model.addAttribute("wpt_types", WptType.values());
+        model.addAttribute("wpt_rvsms", WptRVSM.values());
+        model.addAttribute("in_dafifs", InDAFIF.values());
+        model.addAttribute("name_inds", NameIndicator.values());
+        model.addAttribute("arincCustAreas", ARINCcustArea.values());
         return "waypoint/modify";
     }
 
     @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.POST)
     public String processModifyWaypointForm(@PathVariable int waypointID, String wpt_ident, String icao_rgn,
                                             float latitude, float longitude, Datum datum, LocalDatum local_datum,
-                                            CoordACC geo_acc, String d_magvar, Double var, java.sql.Date var_date,
-                                            WptUsage usage_cd, WptType wpt_type, WptRVSM wpt_rvsm, InDAFIF in_dafif,
+                                            CoordACC coordACC, String d_magvar, Double var, java.sql.Date var_date,
+                                            WptUsage wpt_usage, WptType wpt_type, WptRVSM wpt_rvsm, InDAFIF in_dafif,
                                             boolean drv_ident, String chart_text, NameIndicator name_ind,
-                                            String name_desc, String place_name, ARINCcustArea custarea)
+                                            String name_desc, String place_name, ARINCcustArea arincCustArea)
     {
         Wpt modWpt = WptData.getById(waypointID);
         modWpt.setWpt_ident(wpt_ident);
@@ -96,21 +109,21 @@ public class WaypointController {
         modWpt.setLatitude(latitude);
         modWpt.setLongitude(longitude);
         modWpt.setDatum(datum);
-        modWpt.setLocalDatum(local_datum);
-        modWpt.setCoordACC(geo_acc);
+        modWpt.setLocal_datum(local_datum);
+        modWpt.setCoordACC(coordACC);
         modWpt.setD_magvar(d_magvar);
         modWpt.setVar(var);
         modWpt.setVar_date(var_date);
-        modWpt.setWptUsage(usage_cd);
+        modWpt.setWpt_usage(wpt_usage);
         modWpt.setWpt_type(wpt_type);
         modWpt.setWpt_rvsm(wpt_rvsm);
-        modWpt.setInDAFIF(in_dafif);
+        modWpt.setIn_dafif(in_dafif);
         modWpt.setDrv_ident(drv_ident);
         modWpt.setChart_text(chart_text);
         modWpt.setName_ind(name_ind);
         modWpt.setName_desc(name_desc);
         modWpt.setPlace_name(place_name);
-        modWpt.setArinCcustArea(custarea);
+        modWpt.setArincCustArea(arincCustArea);
         return "redirect:/waypoint";
     }
 

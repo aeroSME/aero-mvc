@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
+
 <body class="container">
 
 <nav th:replace="fragments :: navigation"></nav>
@@ -42,131 +43,146 @@
 </body>
 
 <body>
-<div id="form">
-<th:form method="post" style="max-width: 200px" th:object="${wpt}">
+
+<form method="post" style="max-width: 500px" th:object="${wpt}">
     <div class="form-group">
         <label th:for="wpt_ident">Waypoint Ident</label>
-        <input class="form-control" th:field="*{wpt_ident}"/><br/>
+        <input th:field="*{wpt_ident}"/>
         <span th:errors="*{wpt_ident}" class="error"></span>
     </div>
     <div class="form-group">
-        <!--<label th:for="icao">ICAO Region</label>-->
-        <!--<select class="form-control" id="icao" name="icao_rgn">-->
         <label th:for="icao_rgn">ICAO Region</label>
-        <select class="form-control" th:field="*{icao_rgn}">
-            <option th:each="icao_rgn : ${IcaoRgn}"
+        <select th:field="*{icao_rgn}">
+            <option th:each="IcaoRgn : ${icao_rgns}"
                     th:text="${IcaoRgn.displayName}"
                     th:value="${IcaoRgn}"></option>
-        </select><br/>
+        </select>
         <span th:errors="*{icao_rgn}" class="error"></span>
-
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="latitude">Latitude</label>
-        <input class="form-control" th:field="*{latitude}"/><br/>
+        <input th:field="*{latitude}"/>
+        <span th:errors="*{latitude}" class="error"></span>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="longitude">Longitude</label>
-        <input class="form-control" th:field="*{longitude}"/><br/>
+        <input th:field="*{longitude}"/>
+        <span th:errors="*{longitude}" class="error"></span>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="datum">Datum</label>
-        <select class="form-control" th:field="*{datum}">
-            <option value="WGE">WGS-84</option>
-            <option value="NAD">NAD-83</option>
-        </select><br/>
+        <select th:field="*{datum}">
+            <option th:each="Datum : ${datums}"
+                    th:text="${Datum.displayName}"
+                    th:value="${Datum}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="local_datum">Local Datum</label>
-        <select class="form-control" th:field="*{local_datum}">
-            <option value="local_datum">example</option>
-        </select><br/>
+        <select th:field="*{local_datum}">
+            <option th:each="LocalDatum : ${local_datums}"
+                    th:text="${LocalDatum.displayName}"
+                    th:value="${LocalDatum}"></option>
+        </select>
     </div>
-    <div>
-        <label th:for="geo_acc">Accuracy</label>
-        <select class="form-control"  th:field="*{geo_acc}">
-            <option value="1">example</option>
-        </select><br/>
+    <div class="form-group">
+        <label th:for="coordACC">Accuracy</label>
+        <select th:field="*{coordACC}">
+            <option th:each="CoordACC : ${coordACCs}"
+                    th:text="${CoordACC.displayName}"
+                    th:value="${coordACC}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="d_magvar">Dynamic Mag Var</label>
-        <input class="form-control" th:field="*{d_magvar}"/><br/>
+        <input th:field="*{d_magvar}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="var">Variance</label>
-        <input class="form-control" th:field="*{var}"/><br/>
+        <input th:field="*{var}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="var_date">Variance Date</label>
-        <input class="form-control" th:field="*{var_date}"/><br/>
+        <input th:field="*{var_date}"/>
     </div>
-    <div>
-        <label th:for="usage_cd">Usage Code</label>
-        <select class="form-control" th:field="*{usage_cd}">
-            <option value="usage_cd">example</option>
-        </select><br/>
+    <div class="form-group">
+        <label th:for="wpt_usage">Usage Code</label>
+        <select th:field="*{wpt_usage}">
+            <option th:each="WptUsage : ${wpt_usages}"
+                    th:text="${WptUsage.displayName}"
+                    th:value="${WptUsage}"></option>
+        </select>
     </div>
-    <div>
-        <label th:for="wpt_type">Type</label>
-        <select class="form-control" th:field="*{wpt_type}">
-            <option value="wpt_type">example</option>
-        </select><br/>
+    <div class="form-group">
+        <label th:for="wpt_type">Waypoint Type</label>
+        <select th:field="*{wpt_type}">
+            <option th:each="WptType : ${wpt_types}"
+                    th:text="${WptType.displayName}"
+                    th:value="${WptType}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="wpt_rvsm">RVSM</label>
-        <select class="form-control" th:field="*{wpt_rvsm}">
-            <option value="wpt_rvsm">example</option>
-        </select><br/>
+        <select th:field="*{wpt_rvsm}">
+            <option th:each="WptRVSM : ${wpt_rvsms}"
+                    th:text="${WptRVSM.displayName}"
+                    th:value="${WptRVSM}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="in_dafif">In DAFIF?</label>
-        <input class="form-control" th:field="*{in_dafif}"/><br/>
+        <select th:field="*{in_dafif}">
+            <option th:each="InDAFIF : ${in_dafifs}"
+                    th:text="${InDAFIF.displayName}"
+                    th:value="${InDAFIF}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="drv_ident">DRV Ident</label>
-        <input class="form-control" type="checkbox" th:field="*{drv_ident}"/><br/>
+        <input type="checkbox" th:field="*{drv_ident}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="chart_text">Chart Text</label>
-        <textarea class="form-control" th:field="*{chart_text}"/><br/>
+        <!--TODO: Investigate why this text area will not accept data-->
+        <textarea th:field="*{chart_text}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="name_ind">Name Indicator</label>
-        <select class="form-control" th:field="*{name_ind}">
-            <option value="name_ind">example</option>
-        </select><br/>
+        <select th:field="*{name_ind}">
+            <option th:each="NameIndicator : ${name_inds}"
+                    th:text="${NameIndicator.displayName}"
+                    th:value="${NameIndicator}"></option>
+        </select>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="name_desc">Name Description</label>
-        <input class="form-control" th:field="*{name_desc}"/><br/>
+        <input th:field="*{name_desc}"/>
     </div>
-    <div>
+    <div class="form-group">
         <label th:for="place_name">Place Name</label>
-        <input class="form-control" th:field="*{place_name}"/><br/>
+        <input th:field="*{place_name}"/>
     </div>
-    <div>
-        <label th:for="custarea">ARINC Customer Area</label>
-        <select class="form-control" th:field="*{custarea}">
-            <option value="custarea">example</option>
-        </select><br/>
+    <div class="form-group">
+        <label th:for="arincCustArea">ARINC Customer Area</label>
+        <select th:field="*{arincCustArea}">
+            <option th:each="ARINCcustArea : ${arincCustAreas}"
+                    th:text="${ARINCcustArea.displayName}"
+                    th:value="${ARINCcustArea}"></option>
+        </select>
     </div>
-    <!--There is a problem with a datatype mismatch between HTML and the java object-->
+    <!--TODO: There is a problem with a datatype mismatch between HTML and the java object-->
     <!--<div>-->
         <!--<label th:for="mod_date">Mod Date</label>-->
-        <!--<input class="form-control" id="mod_date" type="date" name="mod_date"/><br/>-->
+        <!--<input id="mod_date" type="date" name="mod_date"/>-->
     <!--</div>-->
+    <!--TODO: How to handle Cycle Date???-->
     <!--<div>-->
         <!--<label th:for="airac_cycle">Cycle Date</label>-->
-        <!--<input class="form-control" id="airac_cycle" name="airac_cycle"/>-->
+        <!--<input id="airac_cycle" name="airac_cycle"/>-->
     <!--</div>-->
-    <div>
-        <input type="submit" value="Commit"/><br/>
+    <div class="form-group">
+        <input type="submit" value="Commit"/>
     </div>
-</th:form>
-</div>
-
-</body>
-
-
+</form>
 </body>
 </html>

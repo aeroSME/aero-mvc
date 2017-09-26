@@ -16,4 +16,8 @@ public enum  IcaoRgn {
         this.displayName = displayName;
     }
 
+    public String getDisplayName{
+        return displayName;
+    }
+
 }

@@ -86,7 +86,10 @@ public class WaypointController {
     public String processModifyWaypointForm(@PathVariable int waypointID, String wpt_ident, String icao_rgn,
                                             float latitude, float longitude, Datum datum, LocalDatum local_datum,
                                             CoordACC geo_acc, String d_magvar, Double var, java.sql.Date var_date,
-                                            WptUsage usage_cd, WptType wpt_type, WptRVSM wpt_rvsm) {
+                                            WptUsage usage_cd, WptType wpt_type, WptRVSM wpt_rvsm, InDAFIF in_dafif,
+                                            boolean drv_ident, String chart_text, NameIndicator name_ind,
+                                            String name_desc, String place_name, ARINCcustArea custarea)
+    {
         Wpt modWpt = WptData.getById(waypointID);
         modWpt.setWpt_ident(wpt_ident);
         modWpt.setIcao_rgn(icao_rgn);
@@ -98,7 +101,16 @@ public class WaypointController {
         modWpt.setD_magvar(d_magvar);
         modWpt.setVar(var);
         modWpt.setVar_date(var_date);
-
+        modWpt.setWptUsage(usage_cd);
+        modWpt.setWpt_type(wpt_type);
+        modWpt.setWpt_rvsm(wpt_rvsm);
+        modWpt.setInDAFIF(in_dafif);
+        modWpt.setDrv_ident(drv_ident);
+        modWpt.setChart_text(chart_text);
+        modWpt.setName_ind(name_ind);
+        modWpt.setName_desc(name_desc);
+        modWpt.setPlace_name(place_name);
+        modWpt.setArinCcustArea(custarea);
         return "redirect:/waypoint";
     }
 

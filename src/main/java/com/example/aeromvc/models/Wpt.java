@@ -4,6 +4,7 @@ import com.example.aeromvc.models.enums.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.YearMonth;
 
 public class Wpt {
   @NotNull
@@ -46,7 +47,8 @@ public class Wpt {
   private InDAFIF inDAFIF = InDAFIF.N;
   private boolean drv_ident;
   private String chart_text;
-  private String name_ind;
+//  private String name_ind;
+  private NameIndicator name_ind;
   @NotNull
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
@@ -57,7 +59,7 @@ public class Wpt {
   @NotNull
   private java.sql.Timestamp mod_date;
   @NotNull
-  private int airac_cycle;
+  private YearMonth airac_cycle;
 
   public Wpt(String aWpt_ident, String aIcao_rgn) {
     setWpt_ident(aWpt_ident);
@@ -226,11 +228,11 @@ public class Wpt {
     this.chart_text = chart_text;
   }
 
-  public String getName_ind() {
+  public NameIndicator getName_ind() {
     return name_ind;
   }
 
-  public void setName_ind(String name_ind) {
+  public void setName_ind(NameIndicator name_ind) {
     this.name_ind = name_ind;
   }
 
@@ -274,11 +276,11 @@ public class Wpt {
     this.mod_date = mod_date;
   }
 
-  public int getAirac_cycle() {
+  public YearMonth getAirac_cycle() {
     return airac_cycle;
   }
 
-  public void setAirac_cycle(int airac_cycle) {
+  public void setAirac_cycle(YearMonth airac_cycle) {
     this.airac_cycle = airac_cycle;
   }
 

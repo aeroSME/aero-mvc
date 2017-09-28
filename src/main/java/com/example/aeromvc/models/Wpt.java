@@ -1,15 +1,21 @@
 package com.example.aeromvc.models;
 
 import com.example.aeromvc.models.enums.*;
+import com.sun.javafx.beans.IDProperty;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.YearMonth;
 
+@Entity
 public class Wpt {
-  @NotNull
+
+  @Id
+  @GeneratedValue
   private int wptid;
-  private static int nextId = 1;
   private int ardmid;
   @NotNull
   @Size(min=5, max=5, message = "Waypoint Ident must be five characters")
@@ -26,19 +32,19 @@ public class Wpt {
   private String d_magvar;
   private Double var;
   private java.sql.Date var_date;
-  //@NotNull (message = "Waypoint Usage required")
+  @NotNull (message = "Waypoint Usage required")
   private WptUsage wpt_usage;
-  //@NotNull (message = "Waypoint Type required")
+  @NotNull (message = "Waypoint Type required")
   private WptType wpt_type;
   private WptRVSM wpt_rvsm;
   private int wp_elev;
-  //@NotNull(message = "Required")
+  @NotNull(message = "Required")
   private InDAFIF in_dafif = InDAFIF.N;
   private boolean drv_ident;
   private String chart_text;
   private NameIndicator name_ind;
- // @NotNull
- // @Size(min = 1, message = "Waypoint Naming Description required")
+  @NotNull
+  @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
   private String place_name;
   private ARINCcustArea arincCustArea;
@@ -53,27 +59,10 @@ public class Wpt {
     setIcao_rgn(aIcao_rgn);
   }
 
-  public Wpt() {
-    setWptid(getNextId());
-    setNextId(getNextId() + 1);
-  }
+  public Wpt() {}
 
-  public static int getNextId() {
-    return nextId;
-  }
+  public int getWptid() { return wptid; }
 
-  public static void setNextId(int nextId) {
-    Wpt.nextId = nextId;
-  }
-
-
-  public int getWptid() {
-    return wptid;
-  }
-
-  public void setWptid(int wptid) {
-    this.wptid = wptid;
-  }
 
   public int getArdmid() {
     return ardmid;

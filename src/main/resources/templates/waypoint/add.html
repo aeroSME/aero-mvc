@@ -169,7 +169,7 @@
         <label th:for="arincCustArea">ARINC Customer Area</label>
         <select th:field="*{arincCustArea}">
             <option th:each="ARINCcustArea : ${arincCustAreas}"
-                    th:text="${ARINCcustArea.displayName}"
+                    th:text="${ARINCcustArea.name}"
                     th:value="${ARINCcustArea}"></option>
         </select>
     </div>

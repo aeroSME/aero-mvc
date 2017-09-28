@@ -1,6 +1,9 @@
 package com.example.aeromvc.controllers;
 
+import com.example.aeromvc.models.data.CoordAccDAO;
+import com.example.aeromvc.models.enums.ArincRgn;
 import com.example.aeromvc.models.Wpt;
+import com.example.aeromvc.models.data.ArincRgnDAO;
 import com.example.aeromvc.models.data.WptDAO;
 import com.example.aeromvc.models.enums.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,10 @@ public class WaypointController {
 
     @Autowired
     private WptDAO wptDao;
+    @Autowired
+    private ArincRgnDAO arincRgnDAO;
+    @Autowired
+    private CoordAccDAO coordAccDAO;
 
     @RequestMapping(value = "")
     public String index(Model model) {
@@ -30,16 +37,16 @@ public class WaypointController {
     public String displayAddWaypointForm(Model model) {
         model.addAttribute("title", "Add Waypoint");
         model.addAttribute( new Wpt());
-        model.addAttribute("icao_rgns", IcaoRgn.values());
-        model.addAttribute("datums", Datum.values());
-        model.addAttribute("local_datums", LocalDatum.values());
-        model.addAttribute("coordACCs", CoordACC.values());
-        model.addAttribute("wpt_usages", WptUsage.values());
-        model.addAttribute("wpt_types", WptType.values());
-        model.addAttribute("wpt_rvsms", WptRVSM.values());
-        model.addAttribute("in_dafifs", InDAFIF.values());
-        model.addAttribute("name_inds", NameIndicator.values());
-        model.addAttribute("arincCustAreas", ARINCcustArea.values());
+        model.addAttribute("icao_rgns", IcaoRgn.findAll());
+        model.addAttribute("datums", Datum.findAll());
+        model.addAttribute("local_datums", LocalDatum.findAll());
+        model.addAttribute("coordACCs", coordAccDAO.findAll());
+        model.addAttribute("wpt_usages", WptUsage.findAll());
+        model.addAttribute("wpt_types", WptType.findAll());
+        model.addAttribute("wpt_rvsms", WptRVSM.findAll());
+        model.addAttribute("in_dafifs", inDafif.findAll());
+        model.addAttribute("name_inds", NameIndicator.findAll());
+        model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
         return "waypoint/add";
     }
 
@@ -54,9 +61,9 @@ public class WaypointController {
             model.addAttribute("wpt_usages", WptUsage.values());
             model.addAttribute("wpt_types", WptType.values());
             model.addAttribute("wpt_rvsms", WptRVSM.values());
-            model.addAttribute("in_dafifs", InDAFIF.values());
+            model.addAttribute("in_dafifs", inDafif.values());
             model.addAttribute("name_inds", NameIndicator.values());
-            model.addAttribute("arincCustAreas", ARINCcustArea.values());
+            model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
             return "waypoint/add";
         }
         wptDao.save(newWpt);
@@ -90,9 +97,9 @@ public class WaypointController {
         model.addAttribute("wpt_usages", WptUsage.values());
         model.addAttribute("wpt_types", WptType.values());
         model.addAttribute("wpt_rvsms", WptRVSM.values());
-        model.addAttribute("in_dafifs", InDAFIF.values());
+        model.addAttribute("in_dafifs", inDafif.values());
         model.addAttribute("name_inds", NameIndicator.values());
-        model.addAttribute("arincCustAreas", ARINCcustArea.values());
+        model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
         return "waypoint/modify";
     }
 
@@ -101,9 +108,9 @@ public class WaypointController {
                                             @ModelAttribute @Valid Wpt modWpt, String wpt_ident, String icao_rgn,
                                             float latitude, float longitude, Datum datum, LocalDatum local_datum,
                                             CoordACC coordACC, String d_magvar, Double var, java.sql.Date var_date,
-                                            WptUsage wpt_usage, WptType wpt_type, WptRVSM wpt_rvsm, InDAFIF in_dafif,
+                                            WptUsage wpt_usage, WptType wpt_type, WptRVSM wpt_rvsm, inDafif in_dafif,
                                             boolean drv_ident, String chart_text, NameIndicator name_ind,
-                                            String name_desc, String place_name, ARINCcustArea arincCustArea)
+                                            String name_desc, String place_name, ArincRgn arincCustArea)
     {
         modWpt = wptDao.findOne(waypointID);
         modWpt.setWpt_ident(wpt_ident);

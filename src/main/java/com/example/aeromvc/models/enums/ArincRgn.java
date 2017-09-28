@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class CoordACC {
+public class ArincRgn {
 
     @Id
     @GeneratedValue
@@ -18,12 +18,12 @@ public class CoordACC {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "coordacc_id")
+    @JoinColumn(name = "arincrgn_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
-    public CoordACC() {}
+    public ArincRgn() {}
 
-    public CoordACC(String name) { this.name = name; }
+    public ArincRgn(String name) { this.name = name; }
 
     public int getId() { return id; }
 
@@ -34,21 +34,3 @@ public class CoordACC {
     public List<Wpt> getWaypoints() { return waypoints; }
 
 }
-
-
-
-//    ZERO ("Accurate to hundredths of seconds"),
-//    ONE ("Accurate to tenths of seconds"),
-//    TWO ("Accurate to seconds"),
-//    FOUR ("Accurate to minutes");
-//
-//    private final String displayName;
-//
-//    CoordACC(String displayName) {
-//        this.displayName = displayName;
-//    }
-//
-//    public String getDisplayName() {
-//        return displayName;
-//    }
-

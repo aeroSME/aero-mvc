@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class CoordACC {
+public class inDafif {
 
     @Id
     @GeneratedValue
@@ -18,12 +18,12 @@ public class CoordACC {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "coordacc_id")
+    @JoinColumn(name = "arincrgn_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
-    public CoordACC() {}
+    public inDafif() {}
 
-    public CoordACC(String name) { this.name = name; }
+    public inDafif(String name) { this.name = name; }
 
     public int getId() { return id; }
 
@@ -36,19 +36,20 @@ public class CoordACC {
 }
 
 
-
-//    ZERO ("Accurate to hundredths of seconds"),
-//    ONE ("Accurate to tenths of seconds"),
-//    TWO ("Accurate to seconds"),
-//    FOUR ("Accurate to minutes");
+//package com.example.aeromvc.models.enums;
+//
+//public class inDafif {
+//
+//    Y ("Yes"),
+//    N ("No");
 //
 //    private final String displayName;
 //
-//    CoordACC(String displayName) {
+//    inDafif(String displayName) {
 //        this.displayName = displayName;
 //    }
 //
 //    public String getDisplayName() {
 //        return displayName;
 //    }
-
+//}

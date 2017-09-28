@@ -1,23 +1,60 @@
 package com.example.aeromvc.models.enums;
 
-public enum  IcaoRgn {
+import com.example.aeromvc.models.Wpt;
 
-    K1 ("K1"),
-    K2 ("K2"),
-    K3 ("K3"),
-    K4 ("K4"),
-    K5 ("K5"),
-    K6 ("K6"),
-    K7 ("K7");
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
-    private final String displayName;
+@Entity
+public class IcaoRgn {
 
-    IcaoRgn(String displayName) {
-        this.displayName = displayName;
-    }
+    @Id
+    @GeneratedValue
+    private int id;
 
-    public String getDisplayName() {
-        return displayName;
-    }
+    @NotNull
+    private String name;
+
+    @OneToMany
+    @JoinColumn(name = "arincrgn_id")
+    private List<Wpt> waypoints = new ArrayList<>();
+
+    public IcaoRgn() {}
+
+    public IcaoRgn(String name) { this.name = name; }
+
+    public int getId() { return id; }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public List<Wpt> getWaypoints() { return waypoints; }
 
 }
+
+//package com.example.aeromvc.models.enums;
+//
+//public class  IcaoRgn {
+//
+//    K1 ("K1"),
+//    K2 ("K2"),
+//    K3 ("K3"),
+//    K4 ("K4"),
+//    K5 ("K5"),
+//    K6 ("K6"),
+//    K7 ("K7");
+//
+//    private final String displayName;
+//
+//    IcaoRgn(String displayName) {
+//        this.displayName = displayName;
+//    }
+//
+//    public String getDisplayName() {
+//        return displayName;
+//    }
+//
+//}

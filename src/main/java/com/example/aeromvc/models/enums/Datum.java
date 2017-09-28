@@ -1,20 +1,56 @@
 package com.example.aeromvc.models.enums;
 
-public enum  Datum {
+import com.example.aeromvc.models.Wpt;
 
-    WGE	("WGS 1984	Global Definition"),
-    WGX	("WGS 1984	GPS");
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
-    private final String displayName;
+@Entity
+public class Datum {
 
-    Datum(String displayName) {
-        this.displayName = displayName;
-    }
+    @Id
+    @GeneratedValue
+    private int id;
 
-    public String getDisplayName() {
-        return displayName;
-    }
+    @NotNull
+    private String name;
+
+    @OneToMany
+    @JoinColumn(name = "datum_id")
+    private List<Wpt> waypoints = new ArrayList<>();
+
+    public Datum() {}
+
+    public Datum(String name) { this.name = name; }
+
+    public int getId() { return id; }
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public List<Wpt> getWaypoints() { return waypoints; }
 
 }
-
-
+//package com.example.aeromvc.models.enums;
+//
+//public class  Datum {
+//
+//    WGE	("WGS 1984	Global Definition"),
+//    WGX	("WGS 1984	GPS");
+//
+//    private final String displayName;
+//
+//    Datum(String displayName) {
+//        this.displayName = displayName;
+//    }
+//
+//    public String getDisplayName() {
+//        return displayName;
+//    }
+//
+//}
+//
+//

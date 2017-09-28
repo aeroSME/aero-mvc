@@ -1,11 +1,11 @@
 package com.example.aeromvc.models;
 
 import com.example.aeromvc.models.enums.*;
-import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.YearMonth;
@@ -39,7 +39,7 @@ public class Wpt {
   private WptRVSM wpt_rvsm;
   private int wp_elev;
   @NotNull(message = "Required")
-  private InDAFIF in_dafif = InDAFIF.N;
+  private inDafif in_dafif = inDafif.N;
   private boolean drv_ident;
   private String chart_text;
   private NameIndicator name_ind;
@@ -47,7 +47,8 @@ public class Wpt {
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
   private String place_name;
-  private ARINCcustArea arincCustArea;
+  @ManyToOne
+  private ArincRgn arincCustArea;
   private String cont_app_type;
   //@NotNull
   private java.sql.Timestamp mod_date;
@@ -180,11 +181,11 @@ public class Wpt {
     this.wp_elev = wp_elev;
   }
 
-  public InDAFIF getIn_dafif() {
+  public inDafif getIn_dafif() {
     return in_dafif;
   }
 
-  public void setIn_dafif(InDAFIF in_dafif) {
+  public void setIn_dafif(inDafif in_dafif) {
     this.in_dafif = in_dafif;
   }
 
@@ -228,13 +229,21 @@ public class Wpt {
     this.place_name = place_name;
   }
 
-  public ARINCcustArea getArincCustArea() {
+  public ArincRgn getArincCustArea() {
     return arincCustArea;
   }
 
-  public void setArincCustArea(ARINCcustArea arincCustArea) {
+  public void setArincCustArea(ArincRgn arincCustArea) {
     this.arincCustArea = arincCustArea;
   }
+//
+//  public ArincRgn getArincCustArea() {
+//    return arincCustArea;
+//  }
+//
+//  public void setArincCustArea(ArincRgn arincCustArea) {
+//    this.arincCustArea = arincCustArea;
+//  }
 
   public String getCont_app_type() {
     return cont_app_type;

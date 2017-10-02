@@ -87,11 +87,11 @@
         </select>
     </div>
     <div class="form-group">
-        <label th:for="coordACC">Accuracy</label>
-        <select th:field="*{coordACC}" th:value="${wpt.coordACC}">
+        <label th:for="coordacc">Accuracy</label>
+        <select th:field="*{coordacc}" th:value="${wpt.coordacc}">
             <option th:each="CoordACC : ${coordACCs}"
                     th:text="${CoordACC.displayName}"
-                    th:value="${coordACC}"></option>
+                    th:value="${coordacc}"></option>
         </select>
     </div>
     <div class="form-group">

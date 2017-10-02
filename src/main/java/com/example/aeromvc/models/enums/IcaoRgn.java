@@ -18,7 +18,7 @@ public class IcaoRgn {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "arincrgn_id")
+    @JoinColumn(name = "icaorgn_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
     public IcaoRgn() {}
@@ -34,27 +34,3 @@ public class IcaoRgn {
     public List<Wpt> getWaypoints() { return waypoints; }
 
 }
-
-//package com.example.aeromvc.models.enums;
-//
-//public class  IcaoRgn {
-//
-//    K1 ("K1"),
-//    K2 ("K2"),
-//    K3 ("K3"),
-//    K4 ("K4"),
-//    K5 ("K5"),
-//    K6 ("K6"),
-//    K7 ("K7");
-//
-//    private final String displayName;
-//
-//    IcaoRgn(String displayName) {
-//        this.displayName = displayName;
-//    }
-//
-//    public String getDisplayName() {
-//        return displayName;
-//    }
-//
-//}

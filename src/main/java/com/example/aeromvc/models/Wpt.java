@@ -17,28 +17,28 @@ public class Wpt {
   @GeneratedValue
   private int wptid;
 
-//  @NotNull
-//  @Size(min=5, max=5, message = "Waypoint Ident must be five characters")
+  @NotNull
+  @Size(min=5, max=5, message = "Waypoint Ident must be five characters")
   private String wpt_ident;
 
   @ManyToOne
-//  @NotNull(message = "ICAO Region required")
+  @NotNull(message = "ICAO Region required")
   private IcaoRgn icaoRgn;
 
-//  @NotNull(message = "Latitude required")
+  @NotNull(message = "Latitude required")
   private float latitude;
 
-//  @NotNull(message = "Longitude required")
+  @NotNull(message = "Longitude required")
   private float longitude;
 
-//  @ManyToOne
-//  private Datum datum;
+  @ManyToOne
+  private Datum datum;
 
-//  @ManyToOne
-//  private LocalDatum localDatum;
+  @ManyToOne
+  private LocalDatum localDatum;
 
-//  @ManyToOne
-//  private Coordacc coordacc;
+  @ManyToOne
+  private CoordAcc coordAcc;
 
   private String d_magvar;
 
@@ -46,9 +46,9 @@ public class Wpt {
 
   private java.sql.Date var_date;
 
-//  @ManyToOne
-////  @NotNull (message = "Waypoint Usage required")
-//  private Wptusage1 wptusage1;
+  @ManyToOne
+  @NotNull (message = "Waypoint Usage required")
+  private WptUsage wptUsage;
 //  @ManyToOne
 ////  @NotNull (message = "Waypoint Type required")
 //  private Wpttype1 wpttype1;
@@ -61,13 +61,13 @@ public class Wpt {
   private boolean drv_ident;
   private String chart_text;
 //  @ManyToOne
-//  private Nameindicator1 name_ind;
+//  private Nameindicator name_ind;
   @NotNull
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
   private String place_name;
 //  @ManyToOne
-//  private Arincrgn1 arincrgn1;
+//  private Arincrgn arincrgn;
   private String cont_app_type;
   //@NotNull
   private java.sql.Timestamp mod_date;
@@ -111,29 +111,29 @@ public class Wpt {
     this.longitude = longitude;
   }
 
-//  public Datum getDatum() {
-//    return datum;
-//  }
-//
-//  public void setDatum(Datum datum) {
-//    this.datum = datum;
-//  }
-//
-//  public LocalDatum getLocal_datum() {
-//    return localDatum;
-//  }
-//
-//  public void setLocal_datum(LocalDatum localDatum) {
-//    this.localDatum = localDatum;
-//  }
-//
-//  public Coordacc getCoordacc() {
-//    return coordacc;
-//  }
-//
-//  public void setCoordacc(Coordacc coordacc) {
-//    this.coordacc = coordacc;
-//  }
+  public Datum getDatum() {
+    return datum;
+  }
+
+  public void setDatum(Datum datum) {
+    this.datum = datum;
+  }
+
+  public LocalDatum getLocalDatum() {
+    return localDatum;
+  }
+
+  public void setLocalDatum(LocalDatum localDatum) {
+    this.localDatum = localDatum;
+  }
+
+  public CoordAcc getCoordAcc() {
+    return coordAcc;
+  }
+
+  public void setCoordAcc(CoordAcc coordAcc) {
+    this.coordAcc = coordAcc;
+  }
 
   public String getD_magvar() {
     return d_magvar;
@@ -159,14 +159,15 @@ public class Wpt {
     this.var_date = var_date;
   }
 
-//  public Wptusage1 getWpt_usage() {
-//    return wptusage1;
-//  }
-//
-//  public void setWpt_usage(Wptusage1 wptusage1) {
-//    this.wptusage1 = wptusage1;
-//  }
-//
+  public WptUsage getWptUsage() {
+    return wptUsage;
+  }
+
+  public void setWptUsage(WptUsage wptUsage) {
+    this.wptUsage = wptUsage;
+  }
+
+  //
 //  public Wpttype1 getWpt_type() {
 //    return wpttype1;
 //  }

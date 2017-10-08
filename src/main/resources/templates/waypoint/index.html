@@ -59,17 +59,21 @@
         <th>Latitude</th>
         <th>Longitude</th>
         <th>Datum</th>
+        <th>Local Datum</th>
+        <th>Coordinate Accuracy</th>
+        <!--<th>Dynamic MagVar</th>-->
+        <!--<th>MagVar Date</th>-->
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
         <td><a th:href="@{'/waypoint/modify/' + ${instance.wptid}}">Modify</a></td>
         <td th:text="${instance.wpt_ident}"></td>
-        <td th:text="${instance.icao_rgn}"></td>
+        <td th:text="${instance.icao_rgn.name}"></td>
         <td th:text="${instance.latitude}"></td>
         <td th:text="${instance.longitude}"></td>
-        <td th:text="${instance.datum}"></td>
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <td th:text="${instance.datum.name}"></td>
+        <td th:text="${instance.localDatum.name}"></td>
+        <td th:text="${instance.coordAcc.name}"></td>
         <!--<td th:text="${instance.icao_rgn}"></td>-->
         <!--<td th:text="${instance.icao_rgn}"></td>-->
         <!--<td th:text="${instance.icao_rgn}"></td>-->

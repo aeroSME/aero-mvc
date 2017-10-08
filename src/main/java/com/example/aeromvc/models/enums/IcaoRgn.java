@@ -18,7 +18,7 @@ public class IcaoRgn {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "icaorgn_id")
+    @JoinColumn(name = "icao_rgn_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
     public IcaoRgn() {}

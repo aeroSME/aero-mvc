@@ -51,68 +51,69 @@
     <div class="form-group">
         <label th:for="icao_rgn">ICAO Region</label>
         <select th:field="*{icao_rgn}">
-            <option th:each="IcaoRgn : ${icao_rgns}"
+            <option th:each="IcaoRgn : ${icaorgns}"
                     th:text="${IcaoRgn.name}"
                     th:value="${IcaoRgn.Id}"></option>
         </select>
         <span th:errors="*{icao_rgn}" class="error"></span>
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="latitude">Latitude</label>-->
-        <!--<input th:field="*{latitude}"/>-->
-        <!--<span th:errors="*{latitude}" class="error"></span>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="longitude">Longitude</label>-->
-        <!--<input th:field="*{longitude}"/>-->
-        <!--<span th:errors="*{longitude}" class="error"></span>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="datum">Datum</label>-->
-        <!--<select th:field="*{datum}">-->
-            <!--<option th:each="Datum : ${datums}"-->
-                    <!--th:text="${Datum.name}"-->
-                    <!--th:value="${Datum}"></option>-->
-        <!--</select>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="local_datum">Local Datum</label>-->
-        <!--<select th:field="*{local_datum}">-->
-            <!--<option th:each="LocalDatum : ${local_datums}"-->
-                    <!--th:text="${LocalDatum.name}"-->
-                    <!--th:value="${LocalDatum}"></option>-->
-        <!--</select>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="coordACC">Accuracy</label>-->
-        <!--<select th:field="*{coordACC}">-->
-            <!--<option th:each="Coordacc : ${coordACCs}"-->
-                    <!--th:text="${Coordacc.name}"-->
-                    <!--th:value="${Coordacc}"></option>-->
-        <!--</select>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="d_magvar">Dynamic Mag Var</label>-->
-        <!--<input th:field="*{d_magvar}"/>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="var">Variance</label>-->
-        <!--<input th:field="*{var}"/>-->
-    <!--</div>-->
+    </div>
+    <div class="form-group">
+        <label th:for="latitude">Latitude</label>
+        <input th:field="*{latitude}"/>
+        <span th:errors="*{latitude}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="longitude">Longitude</label>
+        <input th:field="*{longitude}"/>
+        <span th:errors="*{longitude}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="datum">Datum</label>
+        <select th:field="*{datum}">
+            <option th:each="Datum : ${datums}"
+                    th:text="${Datum.name}"
+                    th:value="${Datum.Id}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="local_datum">Local Datum</label>
+        <select th:field="*{localDatum}">
+            <option th:each="LocalDatum : ${localdatums}"
+                    th:text="${LocalDatum.name}"
+                    th:value="${LocalDatum.Id}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="coordACC">Accuracy</label>
+        <select th:field="*{coordAcc}">
+            <option th:each="Coordacc : ${coordaccs}"
+                    th:text="${Coordacc.name}"
+                    th:value="${Coordacc.Id}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="d_magvar">Dynamic Mag Var</label>
+        <input th:field="*{d_magvar}"/>
+    </div>
+    <!--TODO: Cut out "Variance".....its a dup of d_magvar-->
+                            <!--<div class="form-group">-->
+                                <!--<label th:for="var">Variance</label>-->
+                                <!--<input th:field="*{var}"/>-->
+                            <!--</div>-->
     <!--&lt;!&ndash;TODO:  Upon commit there is a conversion error going from form string to java.sql.date type.&ndash;&gt;-->
     <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
         <!--&lt;!&ndash;<label th:for="var_date">Variance Date</label>&ndash;&gt;-->
         <!--&lt;!&ndash;<input th:field="*{var_date}"/>&ndash;&gt;-->
     <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="wpt_usage">Usage Code</label>-->
-        <!--<select th:field="*{wpt_usage}">-->
-            <!--<option th:each="Wptusage1 : ${wpt_usages}"-->
-                    <!--th:text="${Wptusage1.name}"-->
-                    <!--th:value="${Wptusage1}"></option>-->
-        <!--</select>-->
-        <!--<span th:errors="*{wpt_usage}" class="error"></span>-->
-    <!--</div>-->
+    <div class="form-group">
+        <label th:for="wpt_usage">Usage Code</label>
+        <select th:field="*{wptUsage}">
+            <option th:each="WptUsage : ${wpt_usages}"
+                    th:text="${WptUsage.name}"
+                    th:value="${WptUsage.Id}"></option>
+        </select>
+        <span th:errors="*{wpt_usage}" class="error"></span>
+    </div>
     <!--<div class="form-group">-->
         <!--<label th:for="wpt_type">Waypoint Type</label>-->
         <!--<select th:field="*{wpt_type}">-->
@@ -156,15 +157,15 @@
                     <!--th:value="${Nameindicator1}"></option>-->
         <!--</select>-->
     <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="name_desc">Name Description</label>-->
-        <!--<input th:field="*{name_desc}"/>-->
-        <!--<span th:errors="*{name_desc}" class="error"></span>-->
-    <!--</div>-->
+
     <!--<div class="form-group">-->
         <!--<label th:for="place_name">Place Name</label>-->
         <!--<input th:field="*{place_name}"/>-->
-    <!--</div>-->
+    <!--</div>-->    <div class="form-group">
+        <label th:for="name_desc">Name Description</label>
+        <input th:field="*{name_desc}"/>
+        <span th:errors="*{name_desc}" class="error"></span>
+    </div>
     <!--<div class="form-group">-->
         <!--<label th:for="arincCustArea">ARINC Customer Area</label>-->
         <!--<select th:field="*{arincCustArea}">-->
@@ -183,7 +184,7 @@
         <!--&lt;!&ndash;<label th:for="airac_cycle">Cycle Date</label>&ndash;&gt;-->
         <!--&lt;!&ndash;<input id="airac_cycle" name="airac_cycle"/>&ndash;&gt;-->
     <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--<div class="form-group">-->
+    <div class="form-group">
         <input type="submit" value="Commit"/>
     </div>
 </form>

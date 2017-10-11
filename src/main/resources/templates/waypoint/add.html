@@ -50,12 +50,12 @@
     </div>
     <div class="form-group">
         <label th:for="icao_rgn">ICAO Region</label>
-        <select th:field="*{icao_rgn}">
+        <select th:field="*{IcaoRgn}">
             <option th:each="IcaoRgn : ${icaorgns}"
                     th:text="${IcaoRgn.name}"
                     th:value="${IcaoRgn.Id}"></option>
         </select>
-        <span th:errors="*{icao_rgn}" class="error"></span>
+        <span th:errors="*{IcaoRgn}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="latitude">Latitude</label>
@@ -108,55 +108,50 @@
     <div class="form-group">
         <label th:for="wpt_usage">Usage Code</label>
         <select th:field="*{wptUsage}">
-            <option th:each="WptUsage : ${wpt_usages}"
+            <option th:each="WptUsage : ${wptusages}"
                     th:text="${WptUsage.name}"
                     th:value="${WptUsage.Id}"></option>
         </select>
-        <span th:errors="*{wpt_usage}" class="error"></span>
+        <span th:errors="*{wptUsage}" class="error"></span>
     </div>
-    <!--<div class="form-group">-->
-        <!--<label th:for="wpt_type">Waypoint Type</label>-->
-        <!--<select th:field="*{wpt_type}">-->
-            <!--<option th:each="Wpttype1 : ${wpt_types}"-->
-                    <!--th:text="${Wpttype1.name}"-->
-                    <!--th:value="${Wpttype1}"></option>-->
-        <!--</select>-->
-        <!--<span th:errors="*{wpt_type}" class="error"></span>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="wpt_rvsm">RVSM</label>-->
-        <!--<select th:field="*{wpt_rvsm}">-->
-            <!--<option th:each="Wptrvsm1 : ${wpt_rvsms}"-->
-                    <!--th:text="${Wptrvsm1.name}"-->
-                    <!--th:value="${Wptrvsm1}"></option>-->
-        <!--</select>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="in_dafif">In DAFIF?</label>-->
-        <!--<select th:field="*{in_dafif}">-->
-            <!--<option th:each="InDAFIF : ${in_dafifs}"-->
-                    <!--th:text="${InDAFIF.name}"-->
-                    <!--th:value="${InDAFIF}"></option>-->
-        <!--</select>-->
-        <!--<span th:errors="*{in_dafif}" class="error"></span>-->
-    <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="drv_ident">DRV Ident</label>-->
-        <!--<input type="checkbox" th:field="*{drv_ident}"/>-->
-    <!--</div>-->
+    <div class="form-group">
+        <label th:for="wpt_type">Waypoint Type</label>
+        <select th:field="*{wptType}">
+            <option th:each="WptType : ${wpttypes}"
+                    th:text="${WptType.name}"
+                    th:value="${WptType.Id}"></option>
+        </select>
+        <span th:errors="*{wptType}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="wpt_rvsm">RVSM</label>
+        <select th:field="*{wptRvsm}">
+            <option th:each="WptRvsm : ${wptrvsms}"
+                    th:text="${WptRvsm.name}"
+                    th:value="${WptRvsm.Id}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label th:for="in_dafif">In DAFIF?</label>
+        <input th:type="checkbox"/>
+    </div>
+    <div class="form-group">
+        <label th:for="drv_ident">DRV Ident</label>
+        <input type="checkbox" th:field="*{drv_ident}"/>
+    </div>
     <!--<div class="form-group">-->
         <!--<label th:for="chart_text">Chart Text</label>-->
         <!--&lt;!&ndash;TODO: Investigate why this text area will not accept data&ndash;&gt;-->
         <!--<textarea th:field="*{chart_text}"/>-->
     <!--</div>-->
-    <!--<div class="form-group">-->
-        <!--<label th:for="name_ind">Name Indicator</label>-->
-        <!--<select th:field="*{name_ind}">-->
-            <!--<option th:each="Nameindicator1 : ${name_inds}"-->
-                    <!--th:text="${Nameindicator1.name}"-->
-                    <!--th:value="${Nameindicator1}"></option>-->
-        <!--</select>-->
-    <!--</div>-->
+    <div class="form-group">
+        <label th:for="name_ind">Name Indicator</label>
+        <select th:field="*{nameIndicator}">
+            <option th:each="NameIndicator : ${nameinds}"
+                    th:text="${NameIndicator.name}"
+                    th:value="${NameIndicator.Id}"></option>
+        </select>
+    </div>
 
     <!--<div class="form-group">-->
         <!--<label th:for="place_name">Place Name</label>-->

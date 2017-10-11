@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 import java.time.YearMonth;
 
 @Entity
@@ -44,24 +45,30 @@ public class Wpt {
 
   private Double var;
 
-  private java.sql.Date var_date;
+  private Date var_date;
 
   @ManyToOne
   @NotNull (message = "Waypoint Usage required")
   private WptUsage wptUsage;
-//  @ManyToOne
-////  @NotNull (message = "Waypoint Type required")
-//  private Wpttype1 wpttype1;
-//  @ManyToOne
-//  private Wptrvsm1 wptrvsm1;
+
+  @ManyToOne
+  @NotNull (message = "Waypoint Type required")
+  private WptType wptType;
+
+  @ManyToOne
+  private WptRvsm wptRvsm;
+
   private int wp_elev;
-//  @NotNull(message = "Required")
-//  @ManyToOne
-//  private inDafif in_dafif;
+
+  @NotNull(message = "Required")
+  private boolean in_dafif;
+
   private boolean drv_ident;
+
   private String chart_text;
-//  @ManyToOne
-//  private Nameindicator name_ind;
+
+  @ManyToOne
+  private NameIndicator nameIndicator;
   @NotNull
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
@@ -91,9 +98,6 @@ public class Wpt {
     this.wpt_ident = wpt_ident;
   }
 
-  public IcaoRgn getIcao_rgn() { return icaoRgn; }
-
-  public void setIcao_rgn(IcaoRgn icaoRgn) { this.icaoRgn = icaoRgn; }
 
   public float getLatitude() {
     return latitude;
@@ -101,6 +105,14 @@ public class Wpt {
 
   public void setLatitude(float latitude) {
     this.latitude = latitude;
+  }
+
+  public IcaoRgn getIcaoRgn() {
+    return icaoRgn;
+  }
+
+  public void setIcaoRgn(IcaoRgn icaoRgn) {
+    this.icaoRgn = icaoRgn;
   }
 
   public float getLongitude() {
@@ -151,11 +163,11 @@ public class Wpt {
     this.var = var;
   }
 
-  public java.sql.Date getVar_date() {
+  public Date getVar_date() {
     return var_date;
   }
 
-  public void setVar_date(java.sql.Date var_date) {
+  public void setVar_date(Date var_date) {
     this.var_date = var_date;
   }
 
@@ -167,38 +179,38 @@ public class Wpt {
     this.wptUsage = wptUsage;
   }
 
-  //
-//  public Wpttype1 getWpt_type() {
-//    return wpttype1;
-//  }
-//
-//  public void setWpt_type(Wpttype1 wpttype1) {
-//    this.wpttype1 = wpttype1;
-//  }
-//
-//  public Wptrvsm1 getWpt_rvsm() {
-//    return wptrvsm1;
-//  }
-//
-//  public void setWpt_rvsm(Wptrvsm1 wpt_rvsm) {
-//    this.wptrvsm1 = wpt_rvsm;
-//  }
-//
-//  public int getWp_elev() {
-//    return wp_elev;
-//  }
-//
-//  public void setWp_elev(int wp_elev) {
-//    this.wp_elev = wp_elev;
-//  }
-//
-//  public inDafif getIn_dafif() {
-//    return in_dafif;
-//  }
-//
-//  public void setIn_dafif(inDafif in_dafif) {
-//    this.in_dafif = in_dafif;
-//  }
+  public WptType getWptType() {
+    return wptType;
+  }
+
+  public void setWptType(WptType wptType) {
+    this.wptType = wptType;
+  }
+
+  public WptRvsm getWptRvsm() {
+    return wptRvsm;
+  }
+
+  public void setWptRvsm(WptRvsm wptRvsm) {
+    this.wptRvsm = wptRvsm;
+  }
+
+
+  public int getWp_elev() {
+    return wp_elev;
+  }
+
+  public void setWp_elev(int wp_elev) {
+    this.wp_elev = wp_elev;
+  }
+
+  public boolean isIn_dafif() {
+    return in_dafif;
+  }
+
+  public void setIn_dafif(boolean in_dafif) {
+    this.in_dafif = in_dafif;
+  }
 
   public boolean isDrv_ident() {
     return drv_ident;
@@ -216,13 +228,14 @@ public class Wpt {
     this.chart_text = chart_text;
   }
 
-//  public Nameindicator1 getName_ind() {
-//    return name_ind;
-//  }
-//
-//  public void setName_ind(Nameindicator1 name_ind) {
-//    this.name_ind = name_ind;
-//  }
+
+  public NameIndicator getNameIndicator() {
+    return nameIndicator;
+  }
+
+  public void setNameIndicator(NameIndicator nameIndicator) {
+    this.nameIndicator = nameIndicator;
+  }
 
   public String getName_desc() {
     return name_desc;

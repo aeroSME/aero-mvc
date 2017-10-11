@@ -7,7 +7,7 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<h1 th:text="|Modify ${wpt.wpt_ident} (${wpt.icao_rgn.name})|">Default heading reads ident and ICAO </h1>
+<h1 th:text="|Modify ${wpt.wpt_ident} (${wpt.icaoRgn.name})|">Default heading reads ident and ICAO </h1>
 
 <style type="text/css">
     div#map_container{
@@ -56,9 +56,9 @@
         <select th:field="*{icaoRgn}" th:value="${wpt.icaoRgn}">
             <option th:each="IcaoRgn : ${icaorgns}"
                     th:text="${IcaoRgn.name}"
-                    th:value="${IcaoRgn}"></option>
+                    th:value="${IcaoRgn.Id}"></option>
         </select>
-        <span th:errors="*{icao_rgn}" class="error"></span>
+        <span th:errors="*{icaoRgn}" class="error"></span>
     </div>
     <div class="form-group">
         <label th:for="latitude">Latitude</label>
@@ -90,14 +90,14 @@
         <label th:for="coordacc">Accuracy</label>
         <select th:field="*{coordAcc}" th:value="${wpt.coordAcc}">
             <option th:each="CoordAcc : ${coordaccs}"
-                    th:text="${CoordAcc.mame}"
+                    th:text="${CoordAcc.name}"
                     th:value="${CoordAcc.Id}"></option>
         </select>
     </div>
-    <!--<div class="form-group">-->
-        <!--<label th:for="d_magvar">Dynamic Mag Var</label>-->
-        <!--<input th:field="*{d_magvar}" th:value="${wpt.d_magvar}"/>-->
-    <!--</div>-->
+    <div class="form-group">
+        <label th:for="d_magvar">Dynamic Mag Var</label>
+        <input th:field="*{d_magvar}" th:value="${wpt.d_magvar}"/>
+    </div>
     <!--<div class="form-group">-->
         <!--<label th:for="var">Variance</label>-->
         <!--<input th:field="*{var}" th:value="${wpt.var}"/>-->

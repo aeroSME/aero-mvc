@@ -21,10 +21,6 @@ public class FaaIdent {
     @JoinColumn(name = "faa_ident_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
-    public FaaIdent() {}
-
-    public FaaIdent(String name) { this.name = name; }
-
     public int getId() { return id; }
 
     public String getName() { return name; }

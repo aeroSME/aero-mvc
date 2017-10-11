@@ -61,23 +61,27 @@
         <th>Datum</th>
         <th>Local Datum</th>
         <th>Coordinate Accuracy</th>
-        <!--<th>Dynamic MagVar</th>-->
-        <!--<th>MagVar Date</th>-->
+        <th>Dynamic MagVar</th>
+        <th>MagVar Date</th>
+        <th>Usage Code</th>
+        <th>Type Code</th>
+        <th>RVSM</th>
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
         <td><a th:href="@{'/waypoint/modify/' + ${instance.wptid}}">Modify</a></td>
         <td th:text="${instance.wpt_ident}"></td>
-        <td th:text="${instance.icao_rgn.name}"></td>
+        <td th:text="${instance.icaoRgn.name}"></td>
         <td th:text="${instance.latitude}"></td>
         <td th:text="${instance.longitude}"></td>
         <td th:text="${instance.datum.name}"></td>
         <td th:text="${instance.localDatum.name}"></td>
         <td th:text="${instance.coordAcc.name}"></td>
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <td th:text="${instance.d_magvar}"></td>
+        <td th:text="${instance.var_date}"></td>
+        <td th:text="${instance.wptUsage.name}"></td>
+        <td th:text="${instance.wptType.name}"></td>
+        <td th:text="${instance.wptRvsm.name}"></td>
         <!--<td th:text="${instance.icao_rgn}"></td>-->
         <!--<td th:text="${instance.icao_rgn}"></td>-->
         <!--<td th:text="${instance.icao_rgn}"></td>-->

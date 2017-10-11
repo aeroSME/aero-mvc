@@ -2,9 +2,7 @@ package com.example.aeromvc.controllers;
 
 import com.example.aeromvc.models.data.*;
 import com.example.aeromvc.models.Wpt;
-import com.example.aeromvc.models.enums.Datum;
-import com.example.aeromvc.models.enums.IcaoRgn;
-import com.example.aeromvc.models.enums.LocalDatum;
+import com.example.aeromvc.models.enums.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping("waypoint")
@@ -29,16 +28,14 @@ public class WaypointController {
     private CoordAccDAO coordAccDAO;
     @Autowired
     private WptUsageDAO wptUsageDAO;
-//    @Autowired
-//    private WptTypeDAO wptTypeDAO;
-//    @Autowired
-//    private WptRvsmDAO wptRvsmDAO;
-//    @Autowired
-//    private InDafifDAO inDafifDAO;
-//    @Autowired
-//    private NameIndicatorDAO nameIndicatorDAO;
-//    @Autowired
-//    private ArincRgnDAO arincRgnDAO;
+    @Autowired
+    private WptTypeDAO wptTypeDAO;
+    @Autowired
+    private WptRvsmDAO wptRvsmDAO;
+    @Autowired
+    private NameIndicatorDAO nameIndicatorDAO;
+    @Autowired
+    private ArincRgnDAO arincRgnDAO;
 
 
     @RequestMapping(value = "")
@@ -58,16 +55,15 @@ public class WaypointController {
         model.addAttribute("localdatums", localDatumDAO.findAll());
         model.addAttribute("coordaccs", coordAccDAO.findAll());
         model.addAttribute("wptusages", wptUsageDAO.findAll());
-//        model.addAttribute("wpt_types", wptTypeDAO.findAll());
-//        model.addAttribute("wpt_rvsms", wptRvsmDAO.findAll());
-//        model.addAttribute("in_dafifs", inDafifDAO.findAll());
-//        model.addAttribute("name_inds", nameIndicatorDAO.findAll());
-//        model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
+        model.addAttribute("wpttypes", wptTypeDAO.findAll());
+        model.addAttribute("wptrvsms", wptRvsmDAO.findAll());
+        model.addAttribute("nameinds", nameIndicatorDAO.findAll());
+        model.addAttribute("arincrgns", arincRgnDAO.findAll());
         return "waypoint/add";
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddWaypointForm(@ModelAttribute @Valid Wpt newWpt, Errors errors,Model model) {
+    public String processAddWaypointForm(@ModelAttribute @Valid Wpt newWpt, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Waypoint");
             model.addAttribute("icaorgns", icaoRgnDAO.findAll());
@@ -75,11 +71,10 @@ public class WaypointController {
             model.addAttribute("localdatums", localDatumDAO.findAll());
             model.addAttribute("coordaccs", coordAccDAO.findAll());
             model.addAttribute("wptusages", wptUsageDAO.findAll());
-//            model.addAttribute("wpt_types", wptTypeDAO.findAll());
-//            model.addAttribute("wpt_rvsms", wptRvsmDAO.findAll());
-//            model.addAttribute("in_dafifs", inDafifDAO.findAll());
-//            model.addAttribute("name_inds", nameIndicatorDAO.findAll());
-//            model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
+            model.addAttribute("wpttypes", wptTypeDAO.findAll());
+            model.addAttribute("wptrvsms", wptRvsmDAO.findAll());
+            model.addAttribute("nameinds", nameIndicatorDAO.findAll());
+            model.addAttribute("arincrgns", arincRgnDAO.findAll());
             return "waypoint/add";
         }
         wptDao.save(newWpt);
@@ -111,33 +106,32 @@ public class WaypointController {
         model.addAttribute("localdatums", localDatumDAO.findAll());
         model.addAttribute("coordaccs", coordAccDAO.findAll());
         model.addAttribute("wptusages", wptUsageDAO.findAll());
-//        model.addAttribute("wpt_types", wptTypeDAO.findAll());
-//        model.addAttribute("wpt_rvsms", wptRvsmDAO.findAll());
-//        model.addAttribute("in_dafifs", inDafifDAO.findAll());
-//        model.addAttribute("name_inds", nameIndicatorDAO.findAll());
-//        model.addAttribute("arincCustAreas", arincRgnDAO.findAll());
+        model.addAttribute("wpt_types", wptTypeDAO.findAll());
+        model.addAttribute("wptrvsms", wptRvsmDAO.findAll());
+        model.addAttribute("nameinds", nameIndicatorDAO.findAll());
+        model.addAttribute("arincrgns", arincRgnDAO.findAll());
         return "waypoint/modify";
     }
 
     @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.POST)
     public String processModifyWaypointForm(@PathVariable int waypointID, @Valid Wpt modWpt, Errors errors,
                                             String wpt_ident, IcaoRgn icaoRgn, float latitude, float longitude,
-                                            Datum datum, LocalDatum localDatum)
+                                            Datum datum, LocalDatum localDatum, CoordAcc coordAcc, String d_magvar,
+                                            Date var_date, WptUsage wptUsage, WptType wptType, WptRvsm wptRvsm)
     {
         modWpt = wptDao.findOne(waypointID);
         modWpt.setWpt_ident(wpt_ident);
-        modWpt.setIcao_rgn(icaoRgn);
+        modWpt.setIcaoRgn(icaoRgn);
         modWpt.setLatitude(latitude);
         modWpt.setLongitude(longitude);
         modWpt.setDatum(datum);
         modWpt.setLocalDatum(localDatum);
-//        modWpt.setCoordAcc(coordACC);
-//        modWpt.setD_magvar(d_magvar);
-//        modWpt.setVar(var);
+        modWpt.setCoordAcc(coordAcc);
+        modWpt.setD_magvar(d_magvar);
 //        modWpt.setVar_date(var_date);
-//        modWpt.setWpt_usage(wpt_usage);
-//        modWpt.setWpt_type(wpt_type);
-//        modWpt.setWpt_rvsm(wpt_rvsm);
+//        modWpt.setWptUsage(wptUsage);
+//        modWpt.setWptType(wptType);
+//        modWpt.setWptRvsm(wptRvsm);
 //        modWpt.setIn_dafif(in_dafif);
 //        modWpt.setDrv_ident(drv_ident);
 //        modWpt.setChart_text(chart_text);
@@ -145,7 +139,7 @@ public class WaypointController {
 //        modWpt.setName_desc(name_desc);
 //        modWpt.setPlace_name(place_name);
 //        modWpt.setArincCustArea(arincCustArea);
-        //wptDao.save(modWpt);
+        wptDao.save(modWpt);
         return "redirect:/waypoint";
     }
 

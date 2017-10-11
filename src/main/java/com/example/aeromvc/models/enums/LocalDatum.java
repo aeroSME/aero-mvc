@@ -21,12 +21,6 @@ public class LocalDatum {
     @JoinColumn(name = "local_datum_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
-    public LocalDatum(){}
-
-    public LocalDatum(String name) {
-        this.name = name;
-    }
-
     public int getId() {
         return Id;
     }

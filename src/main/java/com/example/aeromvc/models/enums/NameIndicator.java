@@ -8,25 +8,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class IcaoRgn {
+public class NameIndicator {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int Id;
 
     @NotNull
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "icao_rgn_id")
+    @JoinColumn(name = "name_indicator_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
-    public int getId() { return id; }
+    public int getId() {
+        return Id;
+    }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public List<Wpt> getWaypoints() { return waypoints; }
-
+    public List<Wpt> getWaypoints() {
+        return waypoints;
+    }
 }
+

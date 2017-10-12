@@ -66,6 +66,12 @@
         <th>Usage Code</th>
         <th>Type Code</th>
         <th>RVSM</th>
+        <th>In Dafif?</th>
+        <th>DRV Ident?</th>
+        <th>Name Indicator</th>
+        <th>Place Name</th>
+        <th>Chart Text</th>
+        <th>Arinc Region</th>
     </tr>
 
     <tr  th:each="instance : ${waypoints}">
@@ -79,15 +85,15 @@
         <td th:text="${instance.coordAcc.name}"></td>
         <td th:text="${instance.d_magvar}"></td>
         <td th:text="${instance.var_date}"></td>
-        <td th:text="${instance.wptUsage.name}"></td>
+        <td th:text="${instance.usageCd.name}"></td>
         <td th:text="${instance.wptType.name}"></td>
         <td th:text="${instance.wptRvsm.name}"></td>
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
-        <!--<td th:text="${instance.icao_rgn}"></td>-->
+        <td th:text="${instance.in_dafif}"></td>
+        <td th:text="${instance.drv_ident}"></td>
+        <td th:text="${instance.nameIndicator.name}"></td>
+        <td th:text="${instance.place_name}"></td>
+        <td th:text="${instance.chart_text}"></td>
+        <td th:text="${instance.arincRgn.name}"></td>
     </tr>
 </table>
 

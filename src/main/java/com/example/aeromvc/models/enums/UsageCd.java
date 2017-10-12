@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class WptUsage {
+public class UsageCd {
 
     @Id
     @GeneratedValue

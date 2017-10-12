@@ -43,13 +43,11 @@ public class Wpt {
 
   private String d_magvar;
 
-  private Double var;
-
   private Date var_date;
 
   @ManyToOne
   @NotNull (message = "Waypoint Usage required")
-  private WptUsage wptUsage;
+  private UsageCd usageCd;
 
   @ManyToOne
   @NotNull (message = "Waypoint Type required")
@@ -69,12 +67,15 @@ public class Wpt {
 
   @ManyToOne
   private NameIndicator nameIndicator;
+
   @NotNull
   @Size(min = 1, message = "Waypoint Naming Description required")
   private String name_desc;
+
   private String place_name;
-//  @ManyToOne
-//  private Arincrgn arincrgn;
+
+  @ManyToOne
+  private ArincRgn arincRgn;
   private String cont_app_type;
   //@NotNull
   private java.sql.Timestamp mod_date;
@@ -97,7 +98,6 @@ public class Wpt {
   public void setWpt_ident(String wpt_ident) {
     this.wpt_ident = wpt_ident;
   }
-
 
   public float getLatitude() {
     return latitude;
@@ -155,14 +155,6 @@ public class Wpt {
     this.d_magvar = d_magvar;
   }
 
-  public Double getVar() {
-    return var;
-  }
-
-  public void setVar(Double var) {
-    this.var = var;
-  }
-
   public Date getVar_date() {
     return var_date;
   }
@@ -171,12 +163,12 @@ public class Wpt {
     this.var_date = var_date;
   }
 
-  public WptUsage getWptUsage() {
-    return wptUsage;
+  public UsageCd getUsageCd() {
+    return usageCd;
   }
 
-  public void setWptUsage(WptUsage wptUsage) {
-    this.wptUsage = wptUsage;
+  public void setUsageCd(UsageCd usageCd) {
+    this.usageCd = usageCd;
   }
 
   public WptType getWptType() {
@@ -194,7 +186,6 @@ public class Wpt {
   public void setWptRvsm(WptRvsm wptRvsm) {
     this.wptRvsm = wptRvsm;
   }
-
 
   public int getWp_elev() {
     return wp_elev;
@@ -228,10 +219,7 @@ public class Wpt {
     this.chart_text = chart_text;
   }
 
-
-  public NameIndicator getNameIndicator() {
-    return nameIndicator;
-  }
+  public NameIndicator getNameIndicator() { return nameIndicator; }
 
   public void setNameIndicator(NameIndicator nameIndicator) {
     this.nameIndicator = nameIndicator;
@@ -253,13 +241,9 @@ public class Wpt {
     this.place_name = place_name;
   }
 
-//  public Arincrgn1 getArincCustArea() {
-//    return arincrgn1;
-//  }
-//
-//  public void setArincCustArea(Arincrgn1 arincrgn1) {
-//    this.arincrgn1 = arincrgn1;
-//  }
+  public ArincRgn getArincRgn() { return arincRgn; }
+
+  public void setArincRgn(ArincRgn arincRgn) { this.arincRgn = arincRgn; }
 
   public String getCont_app_type() {
     return cont_app_type;

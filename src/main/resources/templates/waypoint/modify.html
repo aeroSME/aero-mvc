@@ -119,7 +119,7 @@
     <div class="form-group">
         <label th:for="wptType">Waypoint Type</label>
         <select th:field="*{wptType}" th:value="${wpt.wptType}">
-            <option th:each="WptType : ${wpt_types}"
+            <option th:each="WptType : ${wpttypes}"
                     th:text="${WptType.name}"
                     th:value="${WptType.Id}"></option>
         </select>

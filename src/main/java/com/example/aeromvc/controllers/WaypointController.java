@@ -106,7 +106,7 @@ public class WaypointController {
         model.addAttribute("localdatums", localDatumDAO.findAll());
         model.addAttribute("coordaccs", coordAccDAO.findAll());
         model.addAttribute("wptusages", wptUsageDAO.findAll());
-        model.addAttribute("wpt_types", wptTypeDAO.findAll());
+        model.addAttribute("wpttypes", wptTypeDAO.findAll());
         model.addAttribute("wptrvsms", wptRvsmDAO.findAll());
         model.addAttribute("nameinds", nameIndicatorDAO.findAll());
         model.addAttribute("arincrgns", arincRgnDAO.findAll());

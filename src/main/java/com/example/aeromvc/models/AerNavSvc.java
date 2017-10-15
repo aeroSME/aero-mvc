@@ -31,18 +31,23 @@ public class AerNavSvc {
 
     private float broadfreq;
 
+    @ManyToOne
+    private FreqCd freqCd;
+
     private int freqprotalt;
 
     private int freqprotdist;
 
-//    @NotNull(message = "Latitude required")
-//    private float latitude;
-//
-//    @NotNull(message = "Longitude required")
-//    private float longitude;
-//
-//    @ManyToOne
-//    private Datum datum;
+    private int radiatedpower;
+
+    @NotNull(message = "Latitude required")
+    private float latitude;
+
+    @NotNull(message = "Longitude required")
+    private float longitude;
+
+    @ManyToOne
+    private Datum datum;
 
     @ManyToOne
     private LocalDatum localDatum;
@@ -50,29 +55,31 @@ public class AerNavSvc {
     @ManyToOne
     private CoordAcc coordAcc;
 
-    private String d_magvar;
+    private float d_magvar;
 
-    private Date var_date;
+    private Date d_var_date;
+
+    private float s_magvar;
+
+    private Date s_var_date;
+
+    private
+
+    private VoiceCd voiceCd;
 
     private int mslelev;
 
     @ManyToOne
+    private NavClassCd navClassCd;
+
+    @ManyToOne
     private UsageCd usageCd;
-//
-//    @NotNull(message = "Required")
-//    private boolean in_dafif;
-//
-//    private boolean drv_ident;
-//
-//    private String chart_text;
-//
-//    @ManyToOne
-//    private NameIndicator nameIndicator;
-//
+
+    @ManyToOne
+    private OpStatCd opStatCd;
+
     private String navservicename;
-//
-//    private String place_name;
-//
+
     @ManyToOne
     private ArincRgn arincRgn;
 

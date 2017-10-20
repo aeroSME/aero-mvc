@@ -1,14 +1,16 @@
 package com.example.aeromvc.models.enums;
 
-import com.example.aeromvc.models.forms.Wpt;
+import com.example.aeromvc.models.forms.AerNavSvc;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-public class ArincRgn {
+public class MagVarMethodCd {
 
     @Id
     @GeneratedValue
@@ -18,8 +20,8 @@ public class ArincRgn {
     private String name;
 
     @OneToMany
-    @JoinColumn(name = "arinc_rgn_id")
-    private List<Wpt> waypoints = new ArrayList<>();
+    @JoinColumn(name = "mag_var_method_cd_id")
+    private List<AerNavSvc> navaids = new ArrayList<>();
 
     public int getId() {
         return Id;
@@ -33,7 +35,6 @@ public class ArincRgn {
         this.name = name;
     }
 
-    public List<Wpt> getWaypoints() {
-        return waypoints;
+    public List<AerNavSvc> getNavaids() { return navaids;
     }
 }

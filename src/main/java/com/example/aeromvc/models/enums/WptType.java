@@ -1,6 +1,6 @@
 package com.example.aeromvc.models.enums;
 
-import com.example.aeromvc.models.Wpt;
+import com.example.aeromvc.models.forms.Wpt;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

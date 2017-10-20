@@ -1,15 +1,13 @@
-package com.example.aeromvc.models;
+package com.example.aeromvc.models.forms;
 
 import com.example.aeromvc.models.enums.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.time.YearMonth;
+import java.util.List;
 
 @Entity
 public class Wpt {
@@ -40,6 +38,9 @@ public class Wpt {
 
   @ManyToOne
   private CoordAcc coordAcc;
+
+  @ManyToMany(mappedBy = "waypoints")
+  private List<AerNavSvc> navaids;
 
   private String d_magvar;
 

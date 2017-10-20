@@ -1,7 +1,7 @@
 package com.example.aeromvc.controllers;
 
 import com.example.aeromvc.models.data.*;
-import com.example.aeromvc.models.Wpt;
+import com.example.aeromvc.models.forms.Wpt;
 import com.example.aeromvc.models.enums.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

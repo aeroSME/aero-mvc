@@ -1,5 +1,6 @@
 package com.example.aeromvc.models.enums;
 
+import com.example.aeromvc.models.forms.AerNavSvc;
 import com.example.aeromvc.models.forms.Wpt;
 
 import javax.persistence.*;
@@ -21,6 +22,8 @@ public class UsageCd {
     @JoinColumn(name = "wpt_usage_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
+    private List<AerNavSvc> navaids = new ArrayList<>();
+
     public int getId() {
         return Id;
     }
@@ -36,4 +39,6 @@ public class UsageCd {
     public List<Wpt> getWaypoints() {
         return waypoints;
     }
+
+    public List<AerNavSvc> getNavaids() { return navaids; }
 }

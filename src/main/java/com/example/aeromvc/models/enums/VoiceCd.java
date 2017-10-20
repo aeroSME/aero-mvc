@@ -12,7 +12,7 @@ import java.util.List;
 
 public class VoiceCd {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue
     private int Id;
 

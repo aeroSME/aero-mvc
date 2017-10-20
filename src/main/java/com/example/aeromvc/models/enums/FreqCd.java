@@ -12,7 +12,7 @@ import java.util.List;
 
 public class FreqCd {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue
     private int Id;
 

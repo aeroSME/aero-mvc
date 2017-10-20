@@ -12,7 +12,7 @@ import java.util.List;
 
 public class SlavedGridTrue {
 
-    @javax.persistence.Id
+    @Id
     @GeneratedValue
     private int Id;
 

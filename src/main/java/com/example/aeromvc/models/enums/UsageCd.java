@@ -22,6 +22,8 @@ public class UsageCd {
     @JoinColumn(name = "wpt_usage_id")
     private List<Wpt> waypoints = new ArrayList<>();
 
+    @OneToMany
+    @JoinColumn(name = "wpt_usage_id")
     private List<AerNavSvc> navaids = new ArrayList<>();
 
     public int getId() {

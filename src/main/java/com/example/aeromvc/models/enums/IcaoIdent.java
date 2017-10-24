@@ -1,6 +1,5 @@
 //package com.example.aeromvc.models.enums;
 //
-//import com.example.aeromvc.models.forms.Wpt;
 //
 //import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
@@ -18,8 +17,8 @@
 //    private String name;
 //
 //    @OneToMany
-//    @JoinColumn(name = "icaoident_id")
-//    private List<Wpt> waypoints = new ArrayList<>();
+//    @JoinColumn(name = "icao_ident_id")
+//    private List<Aerodrome> airports = new ArrayList<>();
 //
 //    public IcaoIdent() {}
 //
@@ -31,7 +30,7 @@
 //
 //    public void setName(String name) { this.name = name; }
 //
-//    public List<Wpt> getWaypoints() { return waypoints; }
+//    public List<Aerodrome> getAirports() { return airports; }
 //
 //}
 //

@@ -33,7 +33,6 @@ public class LocalDatum {
         this.name = name;
     }
 
-    public List<Wpt> getWaypoints() {
-        return waypoints;
+    public List<Wpt> getWaypoints() { return waypoints;
     }
 }

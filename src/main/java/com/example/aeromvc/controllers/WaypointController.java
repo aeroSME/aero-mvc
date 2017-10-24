@@ -114,7 +114,7 @@ public class WaypointController {
     }
 
     @RequestMapping(value = "modify/{waypointID}", method = RequestMethod.POST)
-    public String processModifyWaypointForm(@PathVariable int waypointID, @Valid Wpt modWpt, Errors errors,
+    public String processModifyWaypointForm(@PathVariable int waypointID, @Valid Wpt modWpt, Model model, Errors errors,
                                             String wpt_ident, IcaoRgn icaoRgn, float latitude, float longitude,
                                             Datum datum, LocalDatum localDatum, CoordAcc coordAcc, String d_magvar,
                                             Date var_date, UsageCd usageCd, WptType wptType, WptRvsm wptRvsm,
@@ -122,26 +122,29 @@ public class WaypointController {
                                             NameIndicator nameIndicator, String name_desc, String place_name,
                                             ArincRgn arincRgn)
     {
-        modWpt = wptDao.findOne(waypointID);
-        modWpt.setWpt_ident(wpt_ident);
-        modWpt.setIcaoRgn(icaoRgn);
-        modWpt.setLatitude(latitude);
-        modWpt.setLongitude(longitude);
-        modWpt.setDatum(datum);
-        modWpt.setLocalDatum(localDatum);
-        modWpt.setCoordAcc(coordAcc);
-        modWpt.setD_magvar(d_magvar);
+//        if (errors.hasErrors()) {
+            modWpt = wptDao.findOne(waypointID);
+            modWpt.setWpt_ident(wpt_ident);
+            modWpt.setIcaoRgn(icaoRgn);
+            modWpt.setLatitude(latitude);
+            modWpt.setLongitude(longitude);
+            modWpt.setDatum(datum);
+            modWpt.setLocalDatum(localDatum);
+            modWpt.setCoordAcc(coordAcc);
+            modWpt.setD_magvar(d_magvar);
 //        modWpt.setVar_date(var_date);
-        modWpt.setUsageCd(usageCd);
-        modWpt.setWptType(wptType);
-        modWpt.setWptRvsm(wptRvsm);
-        modWpt.setIn_dafif(in_dafif);
-        modWpt.setDrv_ident(drv_ident);
-        modWpt.setChart_text(chart_text);
-        modWpt.setNameIndicator(nameIndicator);
-        modWpt.setName_desc(name_desc);
-        modWpt.setPlace_name(place_name);
-        modWpt.setArincRgn(arincRgn);
+            modWpt.setUsageCd(usageCd);
+            modWpt.setWptType(wptType);
+            modWpt.setWptRvsm(wptRvsm);
+            modWpt.setIn_dafif(in_dafif);
+            modWpt.setDrv_ident(drv_ident);
+            modWpt.setChart_text(chart_text);
+            modWpt.setNameIndicator(nameIndicator);
+            modWpt.setName_desc(name_desc);
+            modWpt.setPlace_name(place_name);
+            modWpt.setArincRgn(arincRgn);
+//            return "waypoint/modify";
+//        }
         wptDao.save(modWpt);
         return "redirect:/waypoint";
     }

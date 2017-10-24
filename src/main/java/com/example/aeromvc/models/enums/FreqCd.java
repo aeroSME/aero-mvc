@@ -2,14 +2,12 @@ package com.example.aeromvc.models.enums;
 
 import com.example.aeromvc.models.forms.AerNavSvc;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class FreqCd {
 
     @Id

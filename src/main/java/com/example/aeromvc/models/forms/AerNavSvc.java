@@ -15,7 +15,7 @@ public class AerNavSvc {
 
     @Id
     @GeneratedValue
-    private int aernavsvcid;
+    private int id;
 
     @NotNull
     @Size(min=2, max=4, message = "Navaid Ident must be between 2 and 4 characters")
@@ -62,12 +62,16 @@ public class AerNavSvc {
 
     private Date s_var_date;
 
+    @ManyToOne
     private SlavedGridTrue slavedGridTrue;
 
+    @ManyToOne
     private MagVarMethodCd magVarMethodCd;
 
+    @ManyToOne
     private StdOpTmCd stdOpTmCd;
 
+    @ManyToOne
     private VoiceCd voiceCd;
 
     private int mslelev;
@@ -99,8 +103,10 @@ public class AerNavSvc {
 
     public AerNavSvc() {}
 
-    public int getAernavsvcid() {
-        return aernavsvcid;
+    public List<Wpt> getWaypoints() { return waypoints;}
+
+    public int getId() {
+        return id;
     }
 
     public String getNav_ident() {

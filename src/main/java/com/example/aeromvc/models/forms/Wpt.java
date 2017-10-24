@@ -14,7 +14,7 @@ public class Wpt {
 
   @Id
   @GeneratedValue
-  private int wptid;
+  private int id;
 
   @NotNull
   @Size(min=5, max=5, message = "Waypoint Ident must be five characters")
@@ -83,14 +83,14 @@ public class Wpt {
   //@NotNull
   private YearMonth airac_cycle;
 
-//  public Wpt(String aWpt_ident, IcaoRgn aIcao_rgn) {
-//    setWpt_ident(aWpt_ident);
-//    setIcao_rgn(aIcao_rgn);
-//  }
+  public Wpt(String aWpt_ident, IcaoRgn icaoRgn) {
+    setWpt_ident(aWpt_ident);
+    setIcaoRgn(icaoRgn);
+  }
 
   public Wpt() {}
 
-  public int getWptid() { return wptid; }
+  public int getId() { return id; }
 
   public String getWpt_ident() {
     return wpt_ident;

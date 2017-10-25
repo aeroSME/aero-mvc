@@ -39,8 +39,8 @@ public class Wpt {
   @ManyToOne
   private CoordAcc coordAcc;
 
-  @ManyToMany(mappedBy = "waypoints")
-  private List<AerNavSvc> navaids;
+  @ManyToMany(mappedBy = "wpts")
+  private List<AerNavSvc> aerNavSvcs;
 
   private String d_magvar;
 

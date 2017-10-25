@@ -99,11 +99,11 @@ public class AerNavSvc {
     private YearMonth airac_cycle;
 
     @ManyToMany
-    private List<Wpt> waypoints;
+    private List<Wpt> wpts;
 
     public AerNavSvc() {}
 
-    public List<Wpt> getWaypoints() { return waypoints;}
+    public List<Wpt> getWaypoints() { return wpts;}
 
     public int getId() {
         return id;

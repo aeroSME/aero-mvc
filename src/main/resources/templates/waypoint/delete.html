@@ -11,8 +11,8 @@
 <form method="post">
 
     <div th:each="waypoint : ${waypoints}" class="checkbox">
-        <input type="checkbox" name="waypointIds" th:value="${waypoint.wptid}" th:id="${waypoint.wpt_ident}"/>
-        <label th:for="${waypoint.wptid}" th:text="${waypoint.wpt_ident}"></label>
+        <input type="checkbox" name="waypointIds" th:value="${waypoint.id}" th:id="${waypoint.wpt_ident}"/>
+        <label th:for="${waypoint.id}" th:text="${waypoint.wpt_ident}"></label>
         <br />
     </div>
 

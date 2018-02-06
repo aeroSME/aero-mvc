@@ -29,6 +29,11 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	//https://mvnrepository.com/artifact/com.github.ffpojo/ffpojo-parent
+	// https://mvnrepository.com/artifact/junit/junit
+	testCompile group: 'junit', name: 'junit', version: '4.12'
+	compile group: 'com.github.ffpojo', name: 'ffpojo-parent', version: '1.0', ext: 'pom'
+
 }
 
 bootRun {

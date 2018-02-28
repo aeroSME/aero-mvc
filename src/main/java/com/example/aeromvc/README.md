@@ -1,1 +1,1 @@
-This is an testing application for an aeronautical data editing tool for use by air navigation service providers.
+This is an testing application for an aeronautical data editing tool to be used by air navigation service providers.

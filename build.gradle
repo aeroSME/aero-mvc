@@ -23,7 +23,7 @@ repositories {
 
 
 dependencies {
-//	compile("org.springframework.boot:spring-boot-starter-security")
+	compile("org.springframework.boot:spring-boot-starter-security")
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
@@ -33,6 +33,7 @@ dependencies {
 	//https://mvnrepository.com/artifact/com.github.ffpojo/ffpojo-parent
 	// https://mvnrepository.com/artifact/junit/junit
 	testCompile group: 'junit', name: 'junit', version: '4.12'
+	testCompile("org.springframework.security:spring-security-test")
 	compile group: 'com.github.ffpojo', name: 'ffpojo-parent', version: '1.0', ext: 'pom'
 
 }

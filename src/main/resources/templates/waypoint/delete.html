@@ -8,7 +8,7 @@
 
 <h1 th:text="${title}">Default Title</h1>
 
-<form method="post">
+<form th:action="@{/waypoint/delete}" method="post">
 
     <div th:each="waypoint : ${waypoints}" class="checkbox">
         <input type="checkbox" name="waypointIds" th:value="${waypoint.id}" th:id="${waypoint.wpt_ident}"/>
